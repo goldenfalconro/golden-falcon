@@ -678,6 +678,20 @@ function submitForm() {
   var city = document.getElementById('f-city').value;
   var prod = document.getElementById('f-prod') ? document.getElementById('f-prod').value : '';
   var msg = document.getElementById('f-msg').value;
+  
+  var apiUrl = 'https://script.google.com/macros/s/AKfycbzWaNb4eqwTykseRnlENgEhFl6Zt_ahZkPZlS5ypmjKoEEudcRjCgkOoyraOnJO-eRC/exec?action=addLead' +
+    '&name=' + encodeURIComponent(name) +
+    '&mobile=' + encodeURIComponent(mobile) +
+    '&city=' + encodeURIComponent(city) +
+    '&product=' + encodeURIComponent(prod) +
+    '&source=Website' +
+    '&note=' + encodeURIComponent(msg);
+  
+  fetch(apiUrl)
+    .then(function(r) { return r.json(); })
+    .then(function(data) { console.log('Lead saved:', data); })
+    .catch(function(err) { console.log('API error:', err); });
+  
   var waMsg = '*New Lead — Golden Falcon™ Website*\nNaam: '+name+'\nMobile: '+mobile+'\nCity: '+city+'\nType: '+type.toUpperCase()+(prod?'\nProduct: '+prod:'')+(msg?'\nMsg: '+msg:'');
   document.getElementById('modal-body').style.display = 'none';
   document.getElementById('modal-success').classList.add('show');
