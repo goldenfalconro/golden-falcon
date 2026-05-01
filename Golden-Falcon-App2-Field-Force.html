@@ -1,0 +1,3371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+<meta name="theme-color" content="#1E3A2F">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="description" content="Golden Falcon Field Force — Salesman, Technician, Dealer Portal">
+<title>Golden Falcon™ — Field Force</title>
+
+<link rel="manifest" href='data:application/manifest+json,{"name":"Golden Falcon Field Force","short_name":"Falcon Field","start_url":".","display":"standalone","background_color":"%23F5EFE4","theme_color":"%231E3A2F"}'>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════════════
+   GOLDEN FALCON™ FIELD FORCE — Pure Earth Theme v2
+   App 2: Salesman + Technician + Dealer (unified PWA)
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* Forest Green */
+  --forest-deepest: #0E1F18;
+  --forest-deep:    #142820;
+  --forest:         #1E3A2F;
+  --forest-soft:    #2D5142;
+  --moss:           #4A6F5C;
+  --moss-light:     #6B8B7C;
+  --sage:           #97AEA0;
+
+  /* Copper */
+  --copper-deep:    #8F4F26;
+  --copper:         #B56A3A;
+  --copper-light:   #D08D5E;
+  --copper-soft:    #E8C9B0;
+  --copper-mist:    #F5E4D5;
+
+  /* Cream */
+  --cream:          #F5EFE4;
+  --cream-soft:     #FAF6ED;
+  --cream-deep:     #EDE4D0;
+  --cream-shadow:   #E0D4BA;
+
+  /* Neutrals */
+  --ink:            #1A1A15;
+  --charcoal:       #3A3A32;
+  --stone:          #7A7568;
+  --mist:           #BFB9A8;
+  --pearl:          #D8D2C2;
+
+  /* Functional */
+  --success:        #4A7C3A;
+  --success-light:  #7DA76C;
+  --warning:        #C8862A;
+  --warning-light:  #E0A75A;
+  --danger:         #A43D2E;
+  --danger-light:   #C26A5C;
+  --info:           #2D5C7A;
+  --info-light:     #6090AC;
+
+  /* Role colors */
+  --role-sales:     #2D5C7A;  /* Blue - sales */
+  --role-tech:      #B56A3A;  /* Copper - tech */
+  --role-dealer:    #2D5142;  /* Forest - dealer */
+
+  /* Typography */
+  --font-display:   'Cormorant Garamond', 'Times New Roman', serif;
+  --font-body:      'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;
+  --space-4: 16px;  --space-5: 20px;  --space-6: 24px;
+  --space-8: 32px;  --space-10: 40px; --space-12: 48px;
+  --space-16: 64px; --space-20: 80px;
+
+  /* Radius */
+  --r-sm: 6px;  --r-md: 12px; --r-lg: 18px;
+  --r-xl: 24px; --r-2xl: 32px; --r-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(20, 40, 32, 0.06);
+  --shadow-sm: 0 2px 8px rgba(20, 40, 32, 0.08);
+  --shadow-md: 0 8px 24px rgba(20, 40, 32, 0.10);
+  --shadow-lg: 0 16px 48px rgba(20, 40, 32, 0.14);
+  --shadow-xl: 0 24px 64px rgba(20, 40, 32, 0.18);
+
+  /* Transitions */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Layout */
+  --header-h: 64px;
+  --tabbar-h: 72px;
+  --max-content: 1280px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════════════════════ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--cream-soft);
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { display: block; max-width: 100%; }
+button { font-family: inherit; border: none; background: none; cursor: pointer; color: inherit; }
+input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+a { color: inherit; text-decoration: none; }
+
+::selection { background: var(--copper); color: var(--cream); }
+
+.tm {
+  font-size: 0.5em;
+  vertical-align: super;
+  font-weight: 500;
+  margin-left: 1px;
+  color: var(--copper);
+  font-family: var(--font-body);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   APP SHELL & VIEW SYSTEM
+   ═══════════════════════════════════════════════════════════ */
+
+.app {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.view {
+  display: none;
+  animation: viewIn 0.35s var(--ease-out);
+}
+.view.active { display: block; }
+
+@keyframes viewIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 0 var(--space-5);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   AUTH SCREENS (Login / Role Select / Biometric / OTP)
+   ═══════════════════════════════════════════════════════════ */
+
+.auth {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background:
+    radial-gradient(ellipse at top, rgba(181, 106, 58, 0.08) 0%, transparent 50%),
+    var(--cream-soft);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth::before {
+  content: '';
+  position: absolute;
+  bottom: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(30, 58, 47, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-back {
+  position: absolute;
+  top: var(--space-4);
+  left: var(--space-4);
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: rgba(245, 239, 228, 0.8);
+  backdrop-filter: blur(10px);
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  z-index: 10;
+  transition: all 0.2s var(--ease-smooth);
+}
+.auth-back:hover { background: var(--cream); }
+.auth-back svg { width: 18px; height: 18px; }
+
+.auth-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-8) var(--space-5);
+  max-width: 440px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.auth-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.auth-mark {
+  width: 80px;
+  height: 80px;
+  border-radius: var(--r-2xl);
+  background: var(--cream);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 12px 36px rgba(20, 40, 32, 0.18),
+    inset 0 0 0 1px rgba(181, 106, 58, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+.auth-mark::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border-radius: var(--r-xl);
+  background: radial-gradient(circle at 30% 30%, rgba(232, 201, 176, 0.3), transparent 60%);
+  pointer-events: none;
+}
+.auth-mark img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-brand-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+}
+
+.auth-brand-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-top: 2px;
+}
+
+.auth-title {
+  font-family: var(--font-display);
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--forest);
+  margin-bottom: var(--space-2);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+.auth-title .it { color: var(--copper); font-style: italic; font-weight: 400; }
+
+.auth-sub {
+  font-size: 14px;
+  color: var(--charcoal);
+  margin-bottom: var(--space-6);
+  line-height: 1.55;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ROLE SELECTOR (3 cards: Salesman, Technician, Dealer)
+   ═══════════════════════════════════════════════════════════ */
+
+.role-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.role-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-5);
+  background: var(--cream);
+  border: 2px solid rgba(20, 40, 32, 0.08);
+  border-radius: var(--r-xl);
+  cursor: pointer;
+  transition: all 0.25s var(--ease-smooth);
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+.role-card:hover {
+  border-color: var(--copper);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+.role-card.selected {
+  border-color: var(--forest);
+  background: var(--cream-deep);
+}
+
+.role-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--r-lg);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  color: white;
+}
+.role-icon svg { width: 28px; height: 28px; }
+.role-icon.sales  { background: linear-gradient(135deg, var(--info), var(--role-sales)); }
+.role-icon.tech   { background: linear-gradient(135deg, var(--copper), var(--copper-deep)); }
+.role-icon.dealer { background: linear-gradient(135deg, var(--moss), var(--forest-soft)); }
+
+.role-info { flex: 1; min-width: 0; }
+.role-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  margin-bottom: 2px;
+}
+.role-desc {
+  font-size: 12.5px;
+  color: var(--stone);
+  line-height: 1.4;
+}
+
+.role-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
+  background: var(--cream-deep);
+  color: var(--forest);
+  display: grid;
+  place-items: center;
+  transition: all 0.2s var(--ease-smooth);
+  flex-shrink: 0;
+}
+.role-card:hover .role-arrow { background: var(--copper); color: var(--cream); transform: translateX(3px); }
+
+/* ═══════════════════════════════════════════════════════════
+   AUTH FORM (Phone, OTP, Biometric)
+   ═══════════════════════════════════════════════════════════ */
+
+.form-group { margin-bottom: var(--space-4); }
+
+.form-label {
+  display: block;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--forest-soft);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  height: 50px;
+  padding: 0 var(--space-4);
+  background: var(--cream);
+  border: 1.5px solid rgba(20, 40, 32, 0.1);
+  border-radius: var(--r-md);
+  font-size: 15px;
+  color: var(--ink);
+  transition: all 0.2s var(--ease-smooth);
+  -webkit-appearance: none;
+}
+.form-textarea {
+  height: auto;
+  min-height: 90px;
+  padding: var(--space-3) var(--space-4);
+  resize: vertical;
+  line-height: 1.5;
+}
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: var(--copper);
+  background: var(--cream-soft);
+  box-shadow: 0 0 0 4px rgba(181, 106, 58, 0.1);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--mist); }
+
+.phone-wrap {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  background: var(--cream);
+  border: 1.5px solid rgba(20, 40, 32, 0.1);
+  border-radius: var(--r-md);
+  transition: all 0.2s var(--ease-smooth);
+  overflow: hidden;
+}
+.phone-wrap:focus-within {
+  border-color: var(--copper);
+  background: var(--cream-soft);
+  box-shadow: 0 0 0 4px rgba(181, 106, 58, 0.1);
+}
+.phone-prefix {
+  padding: 0 var(--space-4);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  color: var(--forest);
+  border-right: 1px solid rgba(20, 40, 32, 0.1);
+  background: rgba(20, 40, 32, 0.03);
+  font-size: 15px;
+}
+.phone-input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  background: transparent;
+  padding: 0 var(--space-4);
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+.phone-input:focus { outline: none; }
+
+.btn-primary {
+  width: 100%;
+  height: 56px;
+  border-radius: var(--r-full);
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-deep) 100%);
+  color: var(--cream);
+  font-size: 14.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: all 0.3s var(--ease-smooth);
+  box-shadow: var(--shadow-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+}
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--copper) 0%, var(--copper-deep) 100%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+.btn-primary svg { width: 16px; height: 16px; }
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(245, 239, 228, 0.3);
+  border-top-color: var(--cream);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* OTP Inputs */
+.otp-row {
+  display: flex;
+  gap: var(--space-2);
+  justify-content: space-between;
+  margin: var(--space-5) 0;
+}
+.otp-input {
+  flex: 1;
+  max-width: 56px;
+  height: 64px;
+  text-align: center;
+  background: var(--cream);
+  border: 1.5px solid rgba(20, 40, 32, 0.1);
+  border-radius: var(--r-md);
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--forest);
+  transition: all 0.2s var(--ease-smooth);
+}
+.otp-input:focus {
+  outline: none;
+  border-color: var(--copper);
+  background: var(--cream-soft);
+  box-shadow: 0 0 0 4px rgba(181, 106, 58, 0.1);
+}
+.otp-input.filled { border-color: var(--forest); background: var(--cream-soft); }
+
+.demo-hint {
+  margin-top: var(--space-5);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(181, 106, 58, 0.08);
+  border: 1px dashed rgba(181, 106, 58, 0.3);
+  border-radius: var(--r-md);
+  font-size: 12px;
+  color: var(--copper-deep);
+  text-align: center;
+  line-height: 1.5;
+}
+.demo-hint strong { font-weight: 700; }
+
+/* Biometric Card */
+.bio-card {
+  background: var(--cream);
+  border: 1.5px solid rgba(20, 40, 32, 0.08);
+  border-radius: var(--r-xl);
+  padding: var(--space-6) var(--space-5);
+  text-align: center;
+  margin-bottom: var(--space-4);
+}
+
+.bio-icon-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--copper-soft), var(--copper-mist));
+  display: grid;
+  place-items: center;
+  margin: 0 auto var(--space-4);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-spring);
+}
+.bio-icon-circle::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid var(--copper);
+  opacity: 0;
+  animation: bioRing 2s ease-out infinite;
+}
+.bio-icon-circle:hover { transform: scale(1.05); }
+.bio-icon-circle:active { transform: scale(0.96); }
+.bio-icon-circle svg { width: 48px; height: 48px; color: var(--copper-deep); }
+
+@keyframes bioRing {
+  0% { transform: scale(0.85); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: scale(1.15); opacity: 0; }
+}
+
+.bio-instruction {
+  font-size: 13.5px;
+  color: var(--charcoal);
+  margin-bottom: var(--space-2);
+}
+.bio-tap {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.bio-fallback {
+  text-align: center;
+  font-size: 13px;
+  color: var(--copper);
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: var(--space-4);
+}
+.bio-fallback:hover { color: var(--copper-deep); text-decoration: underline; }
+
+
+/* ═══════════════════════════════════════════════════════════
+   DASHBOARD SHELL (3 roles share this)
+   ═══════════════════════════════════════════════════════════ */
+
+.dash {
+  background: var(--cream-soft);
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding-bottom: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px) + var(--space-4));
+}
+
+/* Dashboard Header — Role-themed background */
+.dash-header {
+  color: var(--cream);
+  padding: var(--space-5) var(--space-5) var(--space-12);
+  position: relative;
+  overflow: hidden;
+}
+
+.dash[data-role="sales"]  .dash-header { background: linear-gradient(165deg, var(--info), #1F4761); }
+.dash[data-role="tech"]   .dash-header { background: linear-gradient(165deg, var(--forest), var(--forest-deep)); }
+.dash[data-role="dealer"] .dash-header { background: linear-gradient(165deg, var(--moss), var(--forest-soft)); }
+
+.dash-header::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -100px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 201, 176, 0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.dash-top-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.user-info { display: flex; align-items: center; gap: var(--space-3); }
+
+.user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(232, 201, 176, 0.3);
+  display: grid;
+  place-items: center;
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--cream);
+  flex-shrink: 0;
+}
+
+.user-text { display: flex; flex-direction: column; line-height: 1.1; }
+.user-greet {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper-soft);
+  opacity: 0.85;
+  margin-bottom: 2px;
+}
+.user-fullname {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: -0.005em;
+}
+
+.dash-actions { display: flex; gap: var(--space-2); }
+
+.dash-icon-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(232, 201, 176, 0.2);
+  display: grid;
+  place-items: center;
+  color: var(--cream);
+  position: relative;
+  transition: all 0.2s var(--ease-smooth);
+}
+.dash-icon-btn:hover { background: rgba(255, 255, 255, 0.2); }
+.dash-icon-btn svg { width: 18px; height: 18px; }
+.dash-icon-btn .badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  min-width: 14px;
+  height: 14px;
+  padding: 0 3px;
+  border-radius: 7px;
+  background: var(--copper);
+  color: var(--cream);
+  font-size: 9px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--forest);
+}
+
+/* GPS Live Status indicator */
+.gps-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px var(--space-3);
+  background: rgba(74, 124, 58, 0.18);
+  border: 1px solid rgba(125, 167, 108, 0.4);
+  border-radius: var(--r-full);
+  font-size: 11px;
+  font-weight: 600;
+  color: #B5DC9F;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.gps-pill::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7DA76C;
+  animation: pulseGps 2s ease-in-out infinite;
+}
+.gps-pill.off {
+  background: rgba(164, 61, 46, 0.18);
+  border-color: rgba(194, 106, 92, 0.4);
+  color: #E5A89C;
+}
+.gps-pill.off::before { background: #E5A89C; animation: none; }
+
+@keyframes pulseGps {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.4); }
+}
+
+.dash-meta-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px var(--space-3);
+  background: rgba(232, 201, 176, 0.15);
+  border: 1px solid rgba(232, 201, 176, 0.25);
+  border-radius: var(--r-full);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper-soft);
+}
+
+/* Hero Stats (3 KPIs) */
+.hero-stats {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(232, 201, 176, 0.15);
+  border-radius: var(--r-xl);
+}
+
+.hstat {
+  text-align: center;
+  position: relative;
+  padding: var(--space-2);
+}
+.hstat:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 25%;
+  right: 0;
+  height: 50%;
+  width: 1px;
+  background: rgba(232, 201, 176, 0.18);
+}
+
+.hstat-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--copper-soft);
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+.hstat-value {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.hstat-value .currency { font-size: 14px; color: var(--copper-soft); margin-right: 1px; }
+.hstat-value .unit { font-size: 12px; color: var(--copper-soft); margin-left: 2px; }
+
+/* Body sits over the curve */
+.dash-body {
+  margin-top: -32px;
+  padding: 0 var(--space-5);
+  position: relative;
+  z-index: 2;
+}
+
+.section {
+  margin-bottom: var(--space-6);
+}
+
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+  padding: 0 4px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+}
+
+.see-all {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--copper);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.see-all:hover { color: var(--copper-deep); }
+.see-all svg { width: 12px; height: 12px; }
+
+/* Quick Actions */
+.q-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.q-action {
+  background: var(--cream);
+  border: 1px solid rgba(20, 40, 32, 0.06);
+  border-radius: var(--r-lg);
+  padding: var(--space-4) var(--space-2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+  transition: all 0.25s var(--ease-smooth);
+}
+.q-action:hover {
+  transform: translateY(-2px);
+  border-color: rgba(181, 106, 58, 0.3);
+  box-shadow: var(--shadow-sm);
+}
+
+.q-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--copper-soft), var(--copper-mist));
+  color: var(--copper-deep);
+  display: grid;
+  place-items: center;
+}
+.q-icon svg { width: 20px; height: 20px; }
+
+.q-label {
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--charcoal);
+  line-height: 1.2;
+}
+
+/* List Cards (Customer / Job / Order / Lead) */
+.list-card {
+  background: var(--cream);
+  border: 1px solid rgba(20, 40, 32, 0.06);
+  border-radius: var(--r-lg);
+  padding: var(--space-4);
+  margin-bottom: var(--space-3);
+  transition: all 0.2s var(--ease-smooth);
+}
+.list-card:last-child { margin-bottom: 0; }
+.list-card:hover {
+  border-color: rgba(181, 106, 58, 0.2);
+  box-shadow: var(--shadow-sm);
+}
+
+.lc-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.lc-icon {
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border-radius: var(--r-md);
+  background: var(--cream-deep);
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+}
+.lc-icon svg { width: 22px; height: 22px; }
+.lc-icon.amber { background: rgba(200, 134, 42, 0.15); color: var(--warning); }
+.lc-icon.green { background: rgba(74, 124, 58, 0.15); color: var(--success); }
+.lc-icon.copper { background: rgba(181, 106, 58, 0.15); color: var(--copper); }
+.lc-icon.info { background: rgba(45, 92, 122, 0.15); color: var(--info); }
+
+.lc-body { flex: 1; min-width: 0; }
+
+.lc-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  margin-bottom: 4px;
+}
+.lc-title {
+  font-family: var(--font-display);
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+.lc-amount {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+  white-space: nowrap;
+}
+.lc-amount .currency { font-size: 12px; color: var(--copper); margin-right: 1px; }
+
+.lc-meta {
+  font-size: 12px;
+  color: var(--stone);
+  margin-bottom: var(--space-2);
+}
+.lc-meta-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+.lc-id {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--stone);
+  background: var(--cream-deep);
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+}
+
+/* Status pills */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px var(--space-2);
+  border-radius: var(--r-full);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.pill::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.pill-pending { background: rgba(200, 134, 42, 0.12); color: var(--warning); }
+.pill-active  { background: rgba(45, 92, 122, 0.12); color: var(--info); }
+.pill-progress { background: rgba(181, 106, 58, 0.12); color: var(--copper-deep); }
+.pill-done    { background: rgba(74, 124, 58, 0.12); color: var(--success); }
+.pill-new     { background: rgba(208, 141, 94, 0.18); color: var(--copper-deep); }
+.pill-cancel  { background: rgba(164, 61, 46, 0.12); color: var(--danger); }
+
+.lc-foot {
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(20, 40, 32, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.lc-link {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--copper);
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+.lc-link svg { width: 11px; height: 11px; }
+
+/* Quick contact icons in cards */
+.lc-quick {
+  display: flex;
+  gap: 6px;
+}
+.lc-quick-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--r-full);
+  background: var(--cream-deep);
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  transition: all 0.2s;
+}
+.lc-quick-btn:hover { background: var(--forest); color: var(--cream); }
+.lc-quick-btn.green:hover { background: var(--success); }
+.lc-quick-btn.copper:hover { background: var(--copper); }
+.lc-quick-btn svg { width: 16px; height: 16px; }
+
+/* Tab Bar */
+.tabbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--tabbar-h) + env(safe-area-inset-bottom, 0px));
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: rgba(245, 239, 228, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-top: 1px solid rgba(20, 40, 32, 0.08);
+  display: none;
+  z-index: 40;
+}
+.tabbar.show { display: flex; }
+
+.tabbar-inner {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 var(--space-2);
+}
+
+.tab-item {
+  flex: 1;
+  height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  color: var(--stone);
+  transition: color 0.2s;
+  position: relative;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.tab-item svg { width: 22px; height: 22px; }
+.tab-item.active { color: var(--forest); }
+.tab-item.active::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--copper);
+}
+
+/* Empty state */
+.empty {
+  padding: var(--space-12) var(--space-5);
+  text-align: center;
+}
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--r-full);
+  background: var(--cream-deep);
+  display: grid;
+  place-items: center;
+  margin: 0 auto var(--space-4);
+  color: var(--stone);
+}
+.empty-icon svg { width: 32px; height: 32px; }
+.empty-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 4px;
+}
+.empty-desc {
+  font-size: 13px;
+  color: var(--stone);
+  max-width: 280px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: calc(var(--tabbar-h) + var(--space-4) + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--forest);
+  color: var(--cream);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--r-full);
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: var(--shadow-lg);
+  z-index: 100;
+  transition: transform 0.4s var(--ease-spring);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  max-width: 90vw;
+}
+.toast.show { transform: translateX(-50%) translateY(0); }
+.toast.success { background: var(--success); }
+.toast.error { background: var(--danger); }
+.toast svg { width: 16px; height: 16px; }
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 40, 32, 0.55);
+  backdrop-filter: blur(8px);
+  z-index: 200;
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.show { display: flex; }
+@media (min-width: 600px) {
+  .modal-overlay { align-items: center; padding: var(--space-5); }
+}
+
+.modal {
+  background: var(--cream);
+  width: 100%;
+  max-width: 460px;
+  border-radius: var(--r-2xl) var(--r-2xl) 0 0;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+  animation: modalUp 0.35s var(--ease-out);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+@media (min-width: 600px) {
+  .modal { border-radius: var(--r-2xl); }
+}
+@keyframes modalUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal-handle {
+  width: 40px;
+  height: 4px;
+  background: var(--mist);
+  border-radius: 2px;
+  margin: 0 auto var(--space-5);
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: var(--space-2);
+}
+.modal-sub {
+  font-size: 13px;
+  color: var(--charcoal);
+  margin-bottom: var(--space-5);
+  line-height: 1.5;
+}
+
+/* Page header (inside views without main hero) */
+.page-head {
+  background: var(--cream);
+  padding: var(--space-5) var(--space-5) var(--space-4);
+  border-bottom: 1px solid rgba(20, 40, 32, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.page-head-left {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  min-width: 0;
+}
+
+.page-head-back {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-full);
+  background: var(--cream-deep);
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+.page-head-back:hover { background: var(--forest); color: var(--cream); }
+.page-head-back svg { width: 18px; height: 18px; }
+
+.page-head-text { flex: 1; min-width: 0; }
+.page-eyebrow {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 2px;
+}
+.page-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.page-body {
+  padding: var(--space-5);
+}
+
+/* Filter chips */
+.filter-row {
+  display: flex;
+  gap: var(--space-2);
+  overflow-x: auto;
+  padding: var(--space-3) var(--space-5);
+  margin-bottom: var(--space-3);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.filter-row::-webkit-scrollbar { display: none; }
+
+.filter-chip {
+  flex-shrink: 0;
+  padding: 8px var(--space-4);
+  background: var(--cream);
+  border: 1px solid rgba(20, 40, 32, 0.1);
+  border-radius: var(--r-full);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--charcoal);
+  white-space: nowrap;
+  transition: all 0.2s var(--ease-smooth);
+}
+.filter-chip.active {
+  background: var(--forest);
+  color: var(--cream);
+  border-color: var(--forest);
+}
+
+/* Profile / Settings rows */
+.list-rows {
+  background: var(--cream);
+  border-radius: var(--r-xl);
+  border: 1px solid rgba(20, 40, 32, 0.06);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid rgba(20, 40, 32, 0.05);
+  transition: background 0.2s;
+  cursor: pointer;
+}
+.list-row:last-child { border-bottom: none; }
+.list-row:hover { background: var(--cream-soft); }
+
+.lr-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--r-md);
+  background: var(--cream-deep);
+  display: grid;
+  place-items: center;
+  color: var(--forest);
+  flex-shrink: 0;
+}
+.lr-icon svg { width: 18px; height: 18px; }
+
+.lr-text { flex: 1; min-width: 0; }
+.lr-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--forest);
+  margin-bottom: 1px;
+}
+.lr-sub {
+  font-size: 12px;
+  color: var(--stone);
+}
+
+.lr-trail svg { width: 16px; height: 16px; color: var(--mist); }
+.lr-toggle {
+  width: 40px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--mist);
+  position: relative;
+  transition: background 0.2s;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.lr-toggle::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  top: 3px;
+  left: 3px;
+  transition: left 0.2s var(--ease-smooth);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+.lr-toggle.on { background: var(--success); }
+.lr-toggle.on::after { left: 19px; }
+
+.danger-row .lr-icon { background: rgba(164, 61, 46, 0.1); color: var(--danger); }
+.danger-row .lr-title { color: var(--danger); }
+
+/* Tracking Map placeholder */
+.gps-map {
+  position: relative;
+  height: 200px;
+  background: linear-gradient(135deg, #2d5142, #1e3a2f);
+  border-radius: var(--r-xl);
+  margin-bottom: var(--space-4);
+  overflow: hidden;
+  border: 1px solid rgba(20, 40, 32, 0.1);
+}
+.gps-map::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0, transparent 20px, rgba(232,201,176,0.05) 20px, rgba(232,201,176,0.05) 21px),
+    repeating-linear-gradient(90deg, transparent 0, transparent 20px, rgba(232,201,176,0.05) 20px, rgba(232,201,176,0.05) 21px);
+}
+.gps-pin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 32px;
+  height: 32px;
+  margin: -16px;
+  background: var(--copper);
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+.gps-pin::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  background: var(--cream);
+  border-radius: 50%;
+}
+.gps-pin-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80px;
+  height: 80px;
+  margin: -40px;
+  border-radius: 50%;
+  background: rgba(181, 106, 58, 0.3);
+  animation: pinPulse 2s ease-out infinite;
+}
+@keyframes pinPulse {
+  0% { transform: scale(0.5); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+.gps-info {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  background: rgba(245, 239, 228, 0.95);
+  backdrop-filter: blur(8px);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--r-md);
+  font-size: 12px;
+  color: var(--forest);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+.gps-info strong { font-weight: 700; }
+.gps-info-stat { display: flex; gap: 4px; align-items: baseline; }
+.gps-info-stat .num {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--forest);
+}
+
+.hidden { display: none !important; }
+
+</style>
+</head>
+<body>
+
+<div class="app">
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: ROLE SELECTION (entry point)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view active" id="view-role">
+  <div class="auth">
+    <div class="auth-content">
+      <div class="auth-brand">
+        <div class="auth-mark">
+          <img id="logoRole" alt="Golden Falcon">
+        </div>
+        <div class="auth-brand-name">Golden Falcon<span class="tm">™</span></div>
+        <div class="auth-brand-tag">Field Force</div>
+      </div>
+
+      <h1 class="auth-title">Welcome <span class="it">aboard.</span></h1>
+      <p class="auth-sub">Select your role to continue. Your team has unique tools designed for your work.</p>
+
+      <div class="role-grid">
+        <button class="role-card" onclick="selectRole('sales')">
+          <div class="role-icon sales">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8v.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="role-info">
+            <div class="role-name">Salesman</div>
+            <div class="role-desc">Customers, leads, billing, commissions</div>
+          </div>
+          <div class="role-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </button>
+
+        <button class="role-card" onclick="selectRole('tech')">
+          <div class="role-icon tech">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.7 3.7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="role-info">
+            <div class="role-name">Technician</div>
+            <div class="role-desc">Service jobs, parts, billing, customers</div>
+          </div>
+          <div class="role-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </button>
+
+        <button class="role-card" onclick="selectRole('dealer')">
+          <div class="role-icon dealer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="role-info">
+            <div class="role-name">Dealer</div>
+            <div class="role-desc">Territory, performance, payouts, analytics</div>
+          </div>
+          <div class="role-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </button>
+      </div>
+
+      <p style="font-size:11.5px; color:var(--stone); text-align:center; line-height:1.5; padding: 0 var(--space-4);">
+        Are you a customer? <a href="#" style="color:var(--copper); font-weight:600;">Use Customer Portal →</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: PHONE LOGIN
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-phone">
+  <div class="auth">
+    <button class="auth-back" onclick="navigate('role')" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="auth-content">
+      <div class="auth-brand">
+        <div class="auth-mark">
+          <img id="logoPhone" alt="Golden Falcon">
+        </div>
+        <div class="auth-brand-name">Golden Falcon<span class="tm">™</span></div>
+        <div class="auth-brand-tag" id="phoneRoleTag">Salesman Login</div>
+      </div>
+
+      <h1 class="auth-title">Sign <span class="it">in.</span></h1>
+      <p class="auth-sub">Enter your registered phone number. We'll send a one-time password via WhatsApp.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="loginPhone">Phone Number</label>
+        <div class="phone-wrap">
+          <span class="phone-prefix">🇮🇳 +91</span>
+          <input id="loginPhone" class="phone-input" type="tel" inputmode="numeric" placeholder="98765 43210" maxlength="10" autocomplete="tel">
+        </div>
+      </div>
+
+      <button class="btn-primary" id="sendOtpBtn" onclick="sendOtp()">
+        <span class="btn-text">Send OTP</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <div class="demo-hint">
+        <strong>Demo Mode:</strong> Use any 10-digit number. OTP will appear on next screen.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: OTP VERIFY
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-otp">
+  <div class="auth">
+    <button class="auth-back" onclick="navigate('phone')" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="auth-content">
+      <div class="auth-brand">
+        <div class="auth-mark">
+          <img id="logoOtp" alt="Golden Falcon">
+        </div>
+      </div>
+
+      <h1 class="auth-title">Verify <span class="it">OTP.</span></h1>
+      <p class="auth-sub">Enter the 6-digit code sent to <strong id="otpPhoneDisplay">+91 ••••• •••••</strong></p>
+
+      <div class="otp-row" id="otpRow">
+        <input class="otp-input" type="tel" inputmode="numeric" maxlength="1" data-idx="0">
+        <input class="otp-input" type="tel" inputmode="numeric" maxlength="1" data-idx="1">
+        <input class="otp-input" type="tel" inputmode="numeric" maxlength="1" data-idx="2">
+        <input class="otp-input" type="tel" inputmode="numeric" maxlength="1" data-idx="3">
+        <input class="otp-input" type="tel" inputmode="numeric" maxlength="1" data-idx="4">
+        <input class="otp-input" type="tel" inputmode="numeric" maxlength="1" data-idx="5">
+      </div>
+
+      <button class="btn-primary" id="verifyOtpBtn" onclick="verifyOtp()">
+        <span class="btn-text">Verify &amp; Continue</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <p style="text-align:center; font-size:12.5px; color:var(--stone); margin-top:var(--space-4);">
+        Didn't receive? <strong id="resendBtn" style="color:var(--copper); cursor:pointer;" onclick="resendOtp()">Resend in <span id="resendTimer">30</span>s</strong>
+      </p>
+
+      <div class="demo-hint">
+        <strong>Your OTP:</strong> <span id="demoOtpCode" style="font-size:16px; letter-spacing:3px; font-weight:700;">------</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: BIOMETRIC (after OTP, optional fingerprint enrol)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-bio">
+  <div class="auth">
+    <div class="auth-content">
+      <div class="auth-brand">
+        <div class="auth-mark">
+          <img id="logoBio" alt="Golden Falcon">
+        </div>
+      </div>
+
+      <h1 class="auth-title">Quick <span class="it">access.</span></h1>
+      <p class="auth-sub">Enable fingerprint to login faster next time. Your biometric data stays on this device only.</p>
+
+      <div class="bio-card">
+        <div class="bio-icon-circle" onclick="enableBiometric()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 11v3a4 4 0 0 0 4 4 5 5 0 0 0 5-5v-3a9 9 0 1 0-18 0v6c0 3.5 2.5 7 6 8M7 11a5 5 0 0 1 10 0v3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="bio-instruction">Tap to enable</div>
+        <div class="bio-tap">Fingerprint Login</div>
+      </div>
+
+      <button class="btn-primary" onclick="completeBio(true)">
+        <span class="btn-text">Enable &amp; Continue</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+
+      <p class="bio-fallback" onclick="completeBio(false)">Skip for now</p>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: DASHBOARD HOME (role-aware, content rendered by JS)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-home">
+  <div class="dash" id="dashHome" data-role="sales">
+    <div class="dash-header">
+      <div class="dash-top-row">
+        <div class="user-info">
+          <div class="user-avatar" id="userAvatar">R</div>
+          <div class="user-text">
+            <span class="user-greet" id="userGreeting">Welcome back</span>
+            <span class="user-fullname" id="userName">Ramesh K.</span>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <button class="dash-icon-btn" onclick="openNotifications()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="badge">3</span>
+          </button>
+          <button class="dash-icon-btn" onclick="navigate('profile')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4" stroke-linecap="round"/><path d="M4 21v-1a8 8 0 0 1 16 0v1" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="dash-meta-row">
+        <span class="role-badge" id="roleBadge">SALESMAN</span>
+        <span class="gps-pill" id="gpsPill">GPS Live</span>
+      </div>
+
+      <div class="hero-stats" id="heroStats">
+        <!-- Rendered by JS based on role -->
+      </div>
+    </div>
+
+    <div class="dash-body">
+      <!-- Quick Actions -->
+      <div class="q-actions" id="quickActions">
+        <!-- Rendered by JS based on role -->
+      </div>
+
+      <!-- Sections - rendered by JS based on role -->
+      <div id="dashSections"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: CUSTOMERS / LEADS (Salesman, Dealer)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-customers">
+  <div class="dash" data-role="sales">
+    <div class="page-head">
+      <div class="page-head-left">
+        <button class="page-head-back" onclick="navigate('home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="page-head-text">
+          <div class="page-eyebrow">Sales · Field</div>
+          <div class="page-title" id="customersTitle">Customers</div>
+        </div>
+      </div>
+      <button class="dash-icon-btn" onclick="openAddCustomer()" style="background:var(--forest); color:var(--cream); border:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <div class="filter-row" id="customerFilters">
+      <button class="filter-chip active" onclick="filterCustomers('all', this)">All</button>
+      <button class="filter-chip" onclick="filterCustomers('lead', this)">Leads</button>
+      <button class="filter-chip" onclick="filterCustomers('active', this)">Active</button>
+      <button class="filter-chip" onclick="filterCustomers('repeat', this)">Repeat</button>
+    </div>
+
+    <div class="page-body">
+      <div id="customersList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: JOBS / SERVICE (Technician)
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-jobs">
+  <div class="dash" data-role="tech">
+    <div class="page-head">
+      <div class="page-head-left">
+        <button class="page-head-back" onclick="navigate('home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="page-head-text">
+          <div class="page-eyebrow">Service · Field</div>
+          <div class="page-title">My Jobs</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-chip active" onclick="filterJobs('today', this)">Today</button>
+      <button class="filter-chip" onclick="filterJobs('pending', this)">Pending</button>
+      <button class="filter-chip" onclick="filterJobs('progress', this)">In Progress</button>
+      <button class="filter-chip" onclick="filterJobs('done', this)">Completed</button>
+    </div>
+
+    <div class="page-body">
+      <div id="jobsList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: BILLING / NEW ORDER
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-billing">
+  <div class="dash" id="billingDash" data-role="sales">
+    <div class="page-head">
+      <div class="page-head-left">
+        <button class="page-head-back" onclick="navigate('home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="page-head-text">
+          <div class="page-eyebrow">Quick Action</div>
+          <div class="page-title" id="billingTitle">New Bill</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="list-rows" style="padding: var(--space-5);">
+        <div class="form-group">
+          <label class="form-label">Customer Name <span style="color:var(--copper);">*</span></label>
+          <input type="text" class="form-input" id="billCustName" placeholder="Customer's name" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone <span style="color:var(--copper);">*</span></label>
+          <input type="tel" class="form-input" id="billCustPhone" placeholder="10-digit number" maxlength="10" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Product / Service <span style="color:var(--copper);">*</span></label>
+          <select class="form-select" id="billProduct" required>
+            <option value="">Select product / service</option>
+            <optgroup label="Domestic RO">
+              <option value="DOM-01|Falcon Basic|6500">Falcon Basic — ₹6,500</option>
+              <option value="DOM-02|Falcon Standard|8000">Falcon Standard — ₹8,000</option>
+              <option value="DOM-03|Falcon Premium|11000">Falcon Premium — ₹11,000</option>
+              <option value="DOM-04|Falcon Advanced|14500">Falcon Advanced — ₹14,500</option>
+              <option value="DOM-05|Falcon Smart|18500">Falcon Smart — ₹18,500</option>
+            </optgroup>
+            <optgroup label="Commercial RO">
+              <option value="COM-25|Falcon C-25|12000">Falcon C-25 (25 LPH) — ₹12,000</option>
+              <option value="COM-50|Falcon C-50|18500">Falcon C-50 (50 LPH) — ₹18,500</option>
+              <option value="COM-100|Falcon C-100|28000">Falcon C-100 (100 LPH) — ₹28,000</option>
+              <option value="COM-200|Falcon C-200|45000">Falcon C-200 (200 LPH) — ₹45,000</option>
+              <option value="COM-500|Falcon C-500|85000">Falcon C-500 (500 LPH) — ₹85,000</option>
+            </optgroup>
+            <optgroup label="Industrial RO">
+              <option value="IND-1K|Industrial Pro 1000|165000">Industrial Pro (1000 LPH) — ₹1,65,000</option>
+              <option value="IND-2K|Industrial Max 2000|285000">Industrial Max (2000 LPH) — ₹2,85,000</option>
+              <option value="IND-5K|Industrial Titan 5000|575000">Industrial Titan (5000 LPH) — ₹5,75,000</option>
+            </optgroup>
+            <optgroup label="Spare Parts — Filters">
+              <option value="FLT-SED|Sediment Filter|250">Sediment Filter — ₹250</option>
+              <option value="FLT-CAR|Carbon Block Filter|450">Carbon Block Filter — ₹450</option>
+              <option value="FLT-POL|Post-Carbon Polisher|350">Post-Carbon Polisher — ₹350</option>
+            </optgroup>
+            <optgroup label="Spare Parts — Membranes">
+              <option value="MEM-75|RO Membrane 75 GPD|1200">RO Membrane 75 GPD — ₹1,200</option>
+              <option value="MEM-150|RO Membrane 150 GPD|2800">RO Membrane 150 GPD — ₹2,800</option>
+              <option value="MEM-500|RO Membrane 500 GPD|6500">RO Membrane 500 GPD — ₹6,500</option>
+            </optgroup>
+            <optgroup label="Spare Parts — Pumps">
+              <option value="PMP-50|Booster Pump 50 GPD|1450">Booster Pump 50 GPD — ₹1,450</option>
+              <option value="PMP-100|Booster Pump 100 GPD|2200">Booster Pump 100 GPD — ₹2,200</option>
+              <option value="PMP-COM|Commercial Pump|8500">Commercial Pump — ₹8,500</option>
+            </optgroup>
+            <optgroup label="Spare Parts — Other">
+              <option value="OTH-UV|UV Lamp 11W|850">UV Lamp 11W — ₹850</option>
+              <option value="OTH-TANK|Storage Tank 12L|2400">Storage Tank 12L — ₹2,400</option>
+              <option value="OTH-SOL|Solenoid Valve|650">Solenoid Valve — ₹650</option>
+            </optgroup>
+            <optgroup label="Service Charges">
+              <option value="SVC-FILTER|Filter Replacement|450">Filter Replacement Service — ₹450</option>
+              <option value="SVC-MEMBRANE|Membrane Replacement|1200">Membrane Replacement Service — ₹1,200</option>
+              <option value="SVC-AMC|Annual Maintenance|2500">Annual Maintenance — ₹2,500</option>
+              <option value="SVC-INSTALL|Installation|800">Installation — ₹800</option>
+              <option value="SVC-CALL|Service Call|350">Service Call — ₹350</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Address</label>
+          <textarea class="form-textarea" id="billAddress" placeholder="Customer's address"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Payment Method</label>
+          <select class="form-select" id="billPayment">
+            <option value="cash">Cash</option>
+            <option value="upi">UPI</option>
+            <option value="card">Card</option>
+            <option value="online">Online Transfer</option>
+            <option value="pending">Mark as Pending</option>
+          </select>
+        </div>
+        <button class="btn-primary" onclick="createBill()">
+          <span class="btn-text">Generate Bill</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: COMMISSION / PAYOUTS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-commission">
+  <div class="dash" id="commDash" data-role="sales">
+    <div class="page-head">
+      <div class="page-head-left">
+        <button class="page-head-back" onclick="navigate('home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="page-head-text">
+          <div class="page-eyebrow">Earnings</div>
+          <div class="page-title" id="commTitle">Commission</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div id="commContent"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: GPS / LIVE TRACKING
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-gps">
+  <div class="dash" data-role="sales">
+    <div class="page-head">
+      <div class="page-head-left">
+        <button class="page-head-back" onclick="navigate('home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="page-head-text">
+          <div class="page-eyebrow">Live Tracking</div>
+          <div class="page-title">My Route</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <div class="gps-map">
+        <div class="gps-pin-pulse"></div>
+        <div class="gps-pin"></div>
+        <div class="gps-info">
+          <div>
+            <strong>Current Location</strong><br>
+            <span style="color:var(--stone); font-size:11px;">Updated 30 sec ago</span>
+          </div>
+          <div class="gps-info-stat">
+            <span class="num">42</span>
+            <span style="font-size:10px; color:var(--stone);">km today</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-rows">
+        <div class="list-row">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="lr-text">
+            <div class="lr-title">Live Tracking</div>
+            <div class="lr-sub">Sharing location every 30 seconds</div>
+          </div>
+          <div class="lr-toggle on" onclick="toggleGPS(this)"></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head">
+          <span class="section-title">Today's Route</span>
+          <span style="font-size:12px; color:var(--stone);">5 stops</span>
+        </div>
+        <div id="routeStops"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     VIEW: PROFILE / SETTINGS
+     ═══════════════════════════════════════════════════════════ -->
+<div class="view" id="view-profile">
+  <div class="dash" id="profileDash" data-role="sales">
+    <div class="page-head">
+      <div class="page-head-left">
+        <button class="page-head-back" onclick="navigate('home')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="page-head-text">
+          <div class="page-eyebrow">Account</div>
+          <div class="page-title">Profile &amp; Settings</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-body">
+      <!-- Profile card -->
+      <div class="list-rows" style="padding: var(--space-5); display:flex; align-items:center; gap:var(--space-4);">
+        <div class="user-avatar" style="width:64px; height:64px; font-size:24px; background:linear-gradient(135deg, var(--forest), var(--forest-deep)); border:none;" id="profileAvatar">R</div>
+        <div style="flex:1; min-width:0;">
+          <div style="font-family:var(--font-display); font-size:20px; font-weight:600; color:var(--forest);" id="profileName">Customer</div>
+          <div style="font-size:12.5px; color:var(--stone); margin-top:2px;" id="profilePhone">+91 ••••• •••••</div>
+          <div style="margin-top:6px;"><span class="role-badge" id="profileRoleBadge" style="background:rgba(181,106,58,0.15); color:var(--copper-deep); border-color:rgba(181,106,58,0.3);">SALESMAN</span></div>
+        </div>
+      </div>
+
+      <!-- Quick stats -->
+      <div class="list-rows" style="padding:var(--space-4) var(--space-5);">
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-2); text-align:center;">
+          <div>
+            <div style="font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--forest);" id="profStat1">0</div>
+            <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); margin-top:4px;">This Month</div>
+          </div>
+          <div style="border-left:1px solid rgba(20,40,32,0.08); border-right:1px solid rgba(20,40,32,0.08);">
+            <div style="font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--forest);" id="profStat2">0</div>
+            <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); margin-top:4px;">Total</div>
+          </div>
+          <div>
+            <div style="font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--forest);" id="profStat3">★ 0</div>
+            <div style="font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--stone); margin-top:4px;">Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings rows -->
+      <div class="list-rows">
+        <div class="list-row" onclick="showToast('Edit profile coming soon')">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7M18.5 2.5a2.1 2.1 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="lr-text"><div class="lr-title">Edit Profile</div><div class="lr-sub">Name, contact, address</div></div>
+          <div class="lr-trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div class="list-row">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 11v3a4 4 0 0 0 4 4 5 5 0 0 0 5-5v-3a9 9 0 1 0-18 0v6c0 3.5 2.5 7 6 8M7 11a5 5 0 0 1 10 0v3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="lr-text"><div class="lr-title">Fingerprint Login</div><div class="lr-sub">Quick biometric access</div></div>
+          <div class="lr-toggle on" onclick="event.stopPropagation(); this.classList.toggle('on');"></div>
+        </div>
+
+        <div class="list-row">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div class="lr-text"><div class="lr-title">Live GPS Tracking</div><div class="lr-sub">Share location during work hours</div></div>
+          <div class="lr-toggle on" onclick="event.stopPropagation(); this.classList.toggle('on');"></div>
+        </div>
+
+        <div class="list-row" onclick="showToast('Notifications settings coming soon')">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 0 1-3.4 0" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="lr-text"><div class="lr-title">Notifications</div><div class="lr-sub">WhatsApp, Email, SMS</div></div>
+          <div class="lr-trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div class="list-row" onclick="contactSupport()">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h0" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="lr-text"><div class="lr-title">Help &amp; Support</div><div class="lr-sub">Chat, FAQ, Contact</div></div>
+          <div class="lr-trail"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+      </div>
+
+      <div class="list-rows">
+        <div class="list-row danger-row" onclick="logout()">
+          <div class="lr-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="lr-text"><div class="lr-title">Logout</div><div class="lr-sub">Sign out of this device</div></div>
+        </div>
+      </div>
+
+      <p style="text-align:center; font-size:11px; color:var(--stone); margin-top:24px; line-height:1.5;">
+        Golden Falcon™ Field Force · v1.0<br>
+        © 2026 Golden Falcon RO Water Purifiers
+      </p>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.app -->
+
+<!-- TAB BAR (rendered dynamically per role) -->
+<nav class="tabbar" id="tabbar">
+  <div class="tabbar-inner" id="tabbarInner">
+    <!-- Filled by JS based on role -->
+  </div>
+</nav>
+
+<!-- TOAST + MODAL -->
+<div class="toast" id="toast">
+  <svg id="toastIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <span id="toastText">Done</span>
+</div>
+
+<div class="modal-overlay" id="modal" onclick="if(event.target.id==='modal')closeModal()">
+  <div class="modal">
+    <div class="modal-handle"></div>
+    <h3 class="modal-title" id="modalTitle">Title</h3>
+    <p class="modal-sub" id="modalSub">Subtitle</p>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+
+
+<script>
+/* ═══════════════════════════════════════════════════════════
+   GOLDEN FALCON™ FIELD FORCE — App 2
+   Salesman + Technician + Dealer (unified PWA)
+   ═══════════════════════════════════════════════════════════ */
+
+// ──────────────────────────────────────────────────────────
+// LOGO BASE64 (header version - copper falcon + forest drop)
+// ──────────────────────────────────────────────────────────
+const LOGO_B64 = "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";
+
+// ──────────────────────────────────────────────────────────
+// STATE
+// ──────────────────────────────────────────────────────────
+const STATE = {
+  view: 'role',
+  role: null,        // 'sales' | 'tech' | 'dealer'
+  user: null,
+  pendingPhone: null,
+  pendingOtp: null,
+  resendTimer: null,
+  resendSeconds: 30,
+  
+  // Demo data
+  customers: [
+    { id: 'C001', name: 'Rajesh Kumar', phone: '9876510101', city: 'Ahmedabad', area: 'Satellite', status: 'active', orders: 2, lastContact: daysAgo(3), avatar: 'R', notes: 'Wants Smart model' },
+    { id: 'C002', name: 'Priya Mehta', phone: '9876510202', city: 'Ahmedabad', area: 'Bodakdev', status: 'lead', orders: 0, lastContact: daysAgo(1), avatar: 'P', notes: 'Showed interest in C-50' },
+    { id: 'C003', name: 'Amit Patel', phone: '9876510303', city: 'Surat', area: 'Adajan', status: 'active', orders: 1, lastContact: daysAgo(7), avatar: 'A', notes: 'Bought Premium last month' },
+    { id: 'C004', name: 'Sunita Shah', phone: '9876510404', city: 'Ahmedabad', area: 'Maninagar', status: 'repeat', orders: 4, lastContact: daysAgo(15), avatar: 'S', notes: 'Best customer, refer source' },
+    { id: 'C005', name: 'Vikram Singh', phone: '9876510505', city: 'Vadodara', area: 'Alkapuri', status: 'lead', orders: 0, lastContact: daysAgo(2), avatar: 'V', notes: 'Industrial inquiry' }
+  ],
+  
+  jobs: [
+    { id: 'JOB-001', type: 'Filter Replacement', customer: 'Rajesh Kumar', phone: '9876510101', address: 'Plot 47, Satellite, Ahmedabad', status: 'today', scheduled: 'Today, 11:30 AM', estimate: 30, eta: '15 min', amount: 450, notes: 'Building 2nd floor' },
+    { id: 'JOB-002', type: 'Annual Maintenance', customer: 'Sunita Shah', phone: '9876510404', address: 'House 12, Maninagar', status: 'today', scheduled: 'Today, 2:00 PM', estimate: 60, eta: '2 hr', amount: 2500, notes: 'Repeat customer' },
+    { id: 'JOB-003', type: 'New Installation', customer: 'Priya Mehta', phone: '9876510202', address: 'Flat 304, Bodakdev', status: 'pending', scheduled: 'Tomorrow, 10:00 AM', estimate: 90, eta: '1 day', amount: 800, notes: 'Falcon Smart unit' },
+    { id: 'JOB-004', type: 'Membrane Replacement', customer: 'Amit Patel', phone: '9876510303', address: 'Shop 8, Adajan', status: 'progress', scheduled: 'In progress', estimate: 45, eta: 'Now', amount: 1200, notes: 'C-50 commercial' },
+    { id: 'JOB-005', type: 'Service Call', customer: 'Vikram Singh', phone: '9876510505', address: 'Industrial area, Vadodara', status: 'done', scheduled: 'Yesterday', estimate: 60, eta: 'Done', amount: 1800, notes: 'Completed, ★5 rating' }
+  ],
+  
+  orders: [
+    { id: 'ORD-K12X', customer: 'Rajesh Kumar', product: 'Falcon Premium', amount: 11000, status: 'shipped', date: daysAgo(2), commission: 880 },
+    { id: 'ORD-K13Y', customer: 'Sunita Shah', product: 'Falcon Smart', amount: 18500, status: 'delivered', date: daysAgo(5), commission: 1480 },
+    { id: 'ORD-K14Z', customer: 'Amit Patel', product: 'Falcon C-25', amount: 12000, status: 'pending', date: daysAgo(0), commission: 960 }
+  ],
+  
+  routeStops: [
+    { id: 1, name: 'Customer: Rajesh K.', address: 'Plot 47, Satellite', time: '10:30 AM', status: 'done', distance: '4.2 km' },
+    { id: 2, name: 'Customer: Priya M.', address: 'Bodakdev (lead visit)', time: '11:45 AM', status: 'done', distance: '6.5 km' },
+    { id: 3, name: 'Lunch Break', address: 'Bodakdev area', time: '1:15 PM', status: 'done', distance: '0 km' },
+    { id: 4, name: 'Customer: Amit P.', address: 'Shop 8, Adajan (Surat)', time: '3:30 PM', status: 'progress', distance: '24 km' },
+    { id: 5, name: 'Customer: Vikram S.', address: 'Industrial, Vadodara', time: '5:30 PM', status: 'pending', distance: '7 km' }
+  ]
+};
+
+// ──────────────────────────────────────────────────────────
+// PRIVACY HELPERS — Phone masking (last 4 digits only)
+// MASTER RULE: Sab jagah phone display masked (•••••  •XXXX)
+// Functional tel:/wa.me/ URLs mein full number rehega
+// ──────────────────────────────────────────────────────────
+function formatPhone(phone) {
+  if (!phone) return '+91 ••••• •••••';
+  const clean = String(phone).replace(/\D/g, '').slice(-10);
+  if (clean.length < 4) return '+91 ••••• •••••';
+  return '+91 ••••• •' + clean.slice(-4);
+}
+
+function fullPhoneTel(phone) {
+  if (!phone) return '#';
+  const clean = String(phone).replace(/\D/g, '').slice(-10);
+  return 'tel:+91' + clean;
+}
+
+function fullPhoneWa(phone) {
+  if (!phone) return '#';
+  const clean = String(phone).replace(/\D/g, '').slice(-10);
+  return 'https://wa.me/91' + clean;
+}
+
+// ──────────────────────────────────────────────────────────
+// CATALOG DATA — Same as App 1, sheet-ready for future Apps Script
+// ──────────────────────────────────────────────────────────
+const CATALOG = {
+  domestic: {
+    title: "Domestic RO",
+    items: [
+      { id: 'DOM-01', name: 'Falcon Basic',     price: 6500 },
+      { id: 'DOM-02', name: 'Falcon Standard',  price: 8000 },
+      { id: 'DOM-03', name: 'Falcon Premium',   price: 11000 },
+      { id: 'DOM-04', name: 'Falcon Advanced',  price: 14500 },
+      { id: 'DOM-05', name: 'Falcon Smart',     price: 18500 }
+    ]
+  },
+  commercial: {
+    title: "Commercial RO",
+    items: [
+      { id: 'COM-25',  name: 'Falcon C-25',  price: 12000 },
+      { id: 'COM-50',  name: 'Falcon C-50',  price: 18500 },
+      { id: 'COM-100', name: 'Falcon C-100', price: 28000 },
+      { id: 'COM-200', name: 'Falcon C-200', price: 45000 },
+      { id: 'COM-500', name: 'Falcon C-500', price: 85000 }
+    ]
+  },
+  industrial: {
+    title: "Industrial RO",
+    items: [
+      { id: 'IND-1K', name: 'Industrial Pro',   price: 165000 },
+      { id: 'IND-2K', name: 'Industrial Max',   price: 285000 },
+      { id: 'IND-5K', name: 'Industrial Titan', price: 575000 }
+    ]
+  },
+  spareparts: {
+    title: "Spare Parts",
+    items: [
+      // Filters
+      { id: 'FLT-SED', name: 'Sediment Filter',     price: 250 },
+      { id: 'FLT-CAR', name: 'Carbon Block Filter', price: 450 },
+      { id: 'FLT-POL', name: 'Post-Carbon Polisher', price: 350 },
+      // Membranes
+      { id: 'MEM-75',  name: 'RO Membrane 75 GPD',  price: 1200 },
+      { id: 'MEM-150', name: 'RO Membrane 150 GPD', price: 2800 },
+      { id: 'MEM-500', name: 'RO Membrane 500 GPD', price: 6500 },
+      // Pumps
+      { id: 'PMP-50',  name: 'Booster Pump 50 GPD',  price: 1450 },
+      { id: 'PMP-100', name: 'Booster Pump 100 GPD', price: 2200 },
+      { id: 'PMP-COM', name: 'Commercial Pump',      price: 8500 },
+      // Other
+      { id: 'OTH-UV',   name: 'UV Lamp 11W',     price: 850 },
+      { id: 'OTH-TANK', name: 'Storage Tank 12L', price: 2400 },
+      { id: 'OTH-SOL',  name: 'Solenoid Valve',  price: 650 }
+    ]
+  }
+};
+
+// Get all SKUs flat list (for billing dropdowns)
+function getAllSkus() {
+  const all = [];
+  Object.keys(CATALOG).forEach(catKey => {
+    CATALOG[catKey].items.forEach(item => {
+      all.push({ ...item, category: CATALOG[catKey].title });
+    });
+  });
+  return all;
+}
+
+// Owner contact (phone hidden in display - last 4 only)
+const OWNER_CONTACT = {
+  phone: '9428211200',  // used only for tel:/wa.me URLs
+  whatsapp: '9428211200',
+  email: 'goldenfalconro@gmail.com'
+};
+
+
+function daysAgo(n) {
+  const d = new Date();
+  d.setDate(d.getDate() - n);
+  return d.toISOString();
+}
+
+// ──────────────────────────────────────────────────────────
+// ROLE CONFIGURATION
+// Each role has: name, icon, hero stats, quick actions, tabs
+// ──────────────────────────────────────────────────────────
+const ROLE_CONFIG = {
+  sales: {
+    name: 'Salesman',
+    badge: 'SALESMAN',
+    user: { name: 'Ramesh Kumar', phone: '9876543210', avatar: 'R' },
+    heroStats: () => [
+      { label: "Today's Sales", value: '₹', valueText: '24,500', accent: '' },
+      { label: 'Customers', value: '127', accent: '+5' },
+      { label: 'Commission', value: '₹', valueText: '8.2K', accent: '' }
+    ],
+    quickActions: [
+      { icon: 'newBill', label: 'New Bill', action: () => navigate('billing') },
+      { icon: 'addCust', label: 'Add Customer', action: openAddCustomer },
+      { icon: 'gps', label: 'My Route', action: () => navigate('gps') },
+      { icon: 'comm', label: 'Commission', action: () => navigate('commission') }
+    ],
+    tabs: [
+      { id: 'home', label: 'Home', icon: 'home' },
+      { id: 'customers', label: 'Customers', icon: 'people' },
+      { id: 'billing', label: 'Bill', icon: 'bill' },
+      { id: 'commission', label: 'Earn', icon: 'wallet' },
+      { id: 'profile', label: 'Profile', icon: 'user' }
+    ],
+    sections: () => `
+      <!-- Today's leads -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-title">Recent Leads &amp; Customers</span>
+          <a class="see-all" onclick="navigate('customers'); return false;" href="#">See all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        ${STATE.customers.slice(0, 3).map(c => customerCardHtml(c)).join('')}
+      </div>
+      
+      <!-- Recent orders -->
+      <div class="section">
+        <div class="section-head">
+          <span class="section-title">My Recent Orders</span>
+          <span style="font-size:12px; color:var(--stone);">${STATE.orders.length} orders</span>
+        </div>
+        ${STATE.orders.slice(0, 2).map(o => orderCardHtml(o)).join('')}
+      </div>
+    `
+  },
+  
+  tech: {
+    name: 'Technician',
+    badge: 'TECHNICIAN',
+    user: { name: 'Suresh Mishra', phone: '9876543220', avatar: 'S' },
+    heroStats: () => [
+      { label: "Today's Jobs", value: '4', accent: '' },
+      { label: 'Completed', value: '12', accent: 'this week' },
+      { label: 'Earned', value: '₹', valueText: '6.8K', accent: '' }
+    ],
+    quickActions: [
+      { icon: 'jobs', label: 'My Jobs', action: () => navigate('jobs') },
+      { icon: 'newBill', label: 'Service Bill', action: () => navigate('billing') },
+      { icon: 'gps', label: 'Navigate', action: () => navigate('gps') },
+      { icon: 'comm', label: 'Earnings', action: () => navigate('commission') }
+    ],
+    tabs: [
+      { id: 'home', label: 'Home', icon: 'home' },
+      { id: 'jobs', label: 'Jobs', icon: 'tools' },
+      { id: 'billing', label: 'Bill', icon: 'bill' },
+      { id: 'gps', label: 'Route', icon: 'map' },
+      { id: 'profile', label: 'Profile', icon: 'user' }
+    ],
+    sections: () => {
+      const todayJobs = STATE.jobs.filter(j => j.status === 'today' || j.status === 'progress').slice(0, 3);
+      return `
+        <div class="section">
+          <div class="section-head">
+            <span class="section-title">Today's Schedule</span>
+            <a class="see-all" onclick="navigate('jobs'); return false;" href="#">All Jobs <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+          ${todayJobs.length ? todayJobs.map(j => jobCardHtml(j)).join('') : emptyHtml('No jobs scheduled', 'Check back later for new assignments')}
+        </div>
+      `;
+    }
+  },
+  
+  dealer: {
+    name: 'Dealer',
+    badge: 'DEALER',
+    user: { name: 'Falcon Distributors', phone: '9876543230', avatar: 'F' },
+    heroStats: () => [
+      { label: 'Monthly Sales', value: '₹', valueText: '4.2L', accent: '' },
+      { label: 'Target', value: '78%', accent: '+12%' },
+      { label: 'Payout', value: '₹', valueText: '32K', accent: '' }
+    ],
+    quickActions: [
+      { icon: 'bag', label: 'Place Order', action: () => navigate('billing') },
+      { icon: 'territory', label: 'Territory', action: () => showToast('Territory map coming soon') },
+      { icon: 'reports', label: 'Reports', action: () => navigate('commission') },
+      { icon: 'comm', label: 'Payouts', action: () => navigate('commission') }
+    ],
+    tabs: [
+      { id: 'home', label: 'Home', icon: 'home' },
+      { id: 'customers', label: 'Customers', icon: 'people' },
+      { id: 'commission', label: 'Earnings', icon: 'wallet' },
+      { id: 'gps', label: 'Territory', icon: 'map' },
+      { id: 'profile', label: 'Profile', icon: 'user' }
+    ],
+    sections: () => `
+      <div class="section">
+        <div class="section-head">
+          <span class="section-title">Performance Snapshot</span>
+        </div>
+        <article class="list-card">
+          <div class="lc-row">
+            <div class="lc-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 12l9-9 9 9M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="lc-body">
+              <div class="lc-title-row">
+                <span class="lc-title">Sales Growth</span>
+                <span class="lc-amount" style="color:var(--success);">+18%</span>
+              </div>
+              <div class="lc-meta">vs last month · Best in region</div>
+              <span class="pill pill-done">Excellent</span>
+            </div>
+          </div>
+        </article>
+        <article class="list-card">
+          <div class="lc-row">
+            <div class="lc-icon copper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="lc-body">
+              <div class="lc-title-row">
+                <span class="lc-title">Territory Coverage</span>
+                <span class="lc-amount">82%</span>
+              </div>
+              <div class="lc-meta">Gujarat region · 23 active areas</div>
+              <span class="pill pill-progress">In progress</span>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <div class="section">
+        <div class="section-head">
+          <span class="section-title">Top Customers</span>
+          <a class="see-all" onclick="navigate('customers'); return false;" href="#">All <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        </div>
+        ${STATE.customers.slice(0, 2).map(c => customerCardHtml(c)).join('')}
+      </div>
+    `
+  }
+};
+
+// ──────────────────────────────────────────────────────────
+// VIEW NAVIGATION
+// ──────────────────────────────────────────────────────────
+function navigate(viewName) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  const target = document.getElementById('view-' + viewName);
+  if (!target) return;
+  target.classList.add('active');
+  STATE.view = viewName;
+  
+  // Tab bar visibility — only on dashboard pages (post-login)
+  const dashViews = ['home', 'customers', 'jobs', 'billing', 'commission', 'gps', 'profile'];
+  const tabbar = document.getElementById('tabbar');
+  if (dashViews.includes(viewName) && STATE.user && STATE.role) {
+    tabbar.classList.add('show');
+    renderTabbar();
+    document.querySelectorAll('.tab-item').forEach(t => {
+      t.classList.toggle('active', t.dataset.tab === viewName);
+    });
+  } else {
+    tabbar.classList.remove('show');
+  }
+  
+  // Render content for specific views
+  if (viewName === 'home') renderHome();
+  if (viewName === 'customers') renderCustomers();
+  if (viewName === 'jobs') renderJobs();
+  if (viewName === 'gps') renderRoute();
+  if (viewName === 'commission') renderCommission();
+  if (viewName === 'profile') renderProfileView();
+  
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+// ──────────────────────────────────────────────────────────
+// AUTH FLOW
+// ──────────────────────────────────────────────────────────
+function selectRole(role) {
+  if (!ROLE_CONFIG[role]) return;
+  STATE.role = role;
+  // Update phone screen role tag
+  document.getElementById('phoneRoleTag').textContent = ROLE_CONFIG[role].name + ' Login';
+  navigate('phone');
+}
+
+function sendOtp() {
+  const phone = document.getElementById('loginPhone').value.replace(/\D/g, '');
+  if (phone.length !== 10) {
+    showToast('Please enter a valid 10-digit number', 'error');
+    return;
+  }
+  const btn = document.getElementById('sendOtpBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div>';
+  
+  setTimeout(() => {
+    const otp = String(Math.floor(100000 + Math.random() * 900000));
+    STATE.pendingPhone = phone;
+    STATE.pendingOtp = otp;
+    
+    // Privacy: show only last 4
+    document.getElementById('otpPhoneDisplay').textContent = '+91 ••••• •' + phone.slice(-4);
+    document.getElementById('demoOtpCode').textContent = otp;
+    
+    document.querySelectorAll('.otp-input').forEach(i => { i.value = ''; i.classList.remove('filled'); });
+    
+    btn.disabled = false;
+    btn.innerHTML = '<span class="btn-text">Send OTP</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    
+    navigate('otp');
+    startResendTimer();
+    setTimeout(() => document.querySelector('.otp-input').focus(), 300);
+  }, 900);
+}
+
+function startResendTimer() {
+  if (STATE.resendTimer) clearInterval(STATE.resendTimer);
+  STATE.resendSeconds = 30;
+  const btn = document.getElementById('resendBtn');
+  btn.style.cursor = 'not-allowed';
+  btn.style.opacity = '0.5';
+  document.getElementById('resendTimer').textContent = STATE.resendSeconds;
+  STATE.resendTimer = setInterval(() => {
+    STATE.resendSeconds--;
+    if (STATE.resendSeconds <= 0) {
+      clearInterval(STATE.resendTimer);
+      btn.innerHTML = 'Resend OTP';
+      btn.style.cursor = 'pointer';
+      btn.style.opacity = '1';
+    } else {
+      document.getElementById('resendTimer').textContent = STATE.resendSeconds;
+    }
+  }, 1000);
+}
+
+function resendOtp() {
+  if (STATE.resendSeconds > 0) return;
+  const otp = String(Math.floor(100000 + Math.random() * 900000));
+  STATE.pendingOtp = otp;
+  document.getElementById('demoOtpCode').textContent = otp;
+  document.querySelectorAll('.otp-input').forEach(i => { i.value = ''; i.classList.remove('filled'); });
+  document.querySelector('.otp-input').focus();
+  showToast('New OTP sent', 'success');
+  startResendTimer();
+}
+
+function verifyOtp() {
+  const inputs = document.querySelectorAll('.otp-input');
+  const entered = Array.from(inputs).map(i => i.value).join('');
+  if (entered.length !== 6) {
+    showToast('Enter all 6 digits', 'error');
+    return;
+  }
+  
+  const btn = document.getElementById('verifyOtpBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<div class="spinner"></div>';
+  
+  setTimeout(() => {
+    if (entered === STATE.pendingOtp) {
+      // Build user from role config + actual phone
+      const cfg = ROLE_CONFIG[STATE.role];
+      STATE.user = {
+        ...cfg.user,
+        phone: STATE.pendingPhone
+      };
+      try { localStorage.setItem('gf_field_user', JSON.stringify({ user: STATE.user, role: STATE.role })); } catch(e) {}
+      
+      btn.disabled = false;
+      btn.innerHTML = '<span class="btn-text">Verify &amp; Continue</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      
+      // Show biometric enrol
+      navigate('bio');
+    } else {
+      btn.disabled = false;
+      btn.innerHTML = '<span class="btn-text">Verify &amp; Continue</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      showToast('Wrong OTP. Try again.', 'error');
+      inputs.forEach(i => { i.value = ''; i.classList.remove('filled'); });
+      inputs[0].focus();
+    }
+  }, 800);
+}
+
+function enableBiometric() {
+  showToast('Fingerprint enrolled (demo)', 'success');
+  setTimeout(() => completeBio(true), 800);
+}
+
+function completeBio(enrolled) {
+  if (enrolled) {
+    showToast('Biometric enabled! ✓', 'success');
+  }
+  navigate('home');
+}
+
+function logout() {
+  try { localStorage.removeItem('gf_field_user'); } catch(e) {}
+  STATE.user = null;
+  STATE.role = null;
+  showToast('Logged out');
+  setTimeout(() => navigate('role'), 400);
+}
+
+
+
+// ──────────────────────────────────────────────────────────
+// RENDER FUNCTIONS
+// ──────────────────────────────────────────────────────────
+function renderHome() {
+  if (!STATE.role || !STATE.user) { navigate('role'); return; }
+  
+  const cfg = ROLE_CONFIG[STATE.role];
+  const dash = document.getElementById('dashHome');
+  dash.dataset.role = STATE.role;
+  
+  // User
+  document.getElementById('userAvatar').textContent = STATE.user.avatar || (STATE.user.name || 'U').charAt(0);
+  document.getElementById('userName').textContent = STATE.user.name;
+  document.getElementById('userGreeting').textContent = greetingText();
+  document.getElementById('roleBadge').textContent = cfg.badge;
+  
+  // Hero stats
+  const stats = cfg.heroStats();
+  document.getElementById('heroStats').innerHTML = stats.map(s => `
+    <div class="hstat">
+      <div class="hstat-label">${s.label}</div>
+      <div class="hstat-value">${s.value === '₹' ? '<span class="currency">₹</span>' + (s.valueText || '') : s.value}${s.accent ? ' <span class="unit">' + s.accent + '</span>' : ''}</div>
+    </div>
+  `).join('');
+  
+  // Quick actions
+  const qaIcons = {
+    newBill: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2" stroke-linejoin="round"/><path d="M9 7h6M9 11h6M9 15h4" stroke-linecap="round"/></svg>',
+    addCust: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6" stroke-linecap="round"/></svg>',
+    gps:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    comm:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="14" rx="2" stroke-linejoin="round"/><path d="M2 10h20M16 16h2" stroke-linecap="round"/></svg>',
+    jobs:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.7 3.7z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    bag:     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9h18l-2 9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L3 9zM8 9V5a4 4 0 0 1 8 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    territory: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19l-6-3V5l6 3 6-3 6 3v11l-6-3-6 3z" stroke-linejoin="round"/><path d="M9 8v11M15 5v11" stroke-linecap="round"/></svg>',
+    reports: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18M7 16l4-4 4 4 5-7" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+  };
+  
+  document.getElementById('quickActions').innerHTML = cfg.quickActions.map((qa, i) => `
+    <button class="q-action" data-qa="${i}">
+      <div class="q-icon">${qaIcons[qa.icon] || qaIcons.bag}</div>
+      <span class="q-label">${qa.label}</span>
+    </button>
+  `).join('');
+  document.querySelectorAll('#quickActions .q-action').forEach((btn, i) => {
+    btn.addEventListener('click', cfg.quickActions[i].action);
+  });
+  
+  // Sections
+  document.getElementById('dashSections').innerHTML = cfg.sections();
+}
+
+function renderTabbar() {
+  if (!STATE.role) return;
+  const cfg = ROLE_CONFIG[STATE.role];
+  const tabIcons = {
+    home:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12l9-9 9 9M5 10v10h14V10" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    people: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke-linecap="round"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke-linecap="round"/></svg>',
+    bill:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2" stroke-linejoin="round"/><path d="M9 7h6M9 11h6M9 15h4" stroke-linecap="round"/></svg>',
+    wallet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="6" width="20" height="14" rx="2" stroke-linejoin="round"/><path d="M2 10h20M16 16h2" stroke-linecap="round"/></svg>',
+    user:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1" stroke-linecap="round"/></svg>',
+    tools:  '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.7 3.7z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    map:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19l-6-3V5l6 3 6-3 6 3v11l-6-3-6 3z" stroke-linejoin="round"/><path d="M9 8v11M15 5v11" stroke-linecap="round"/></svg>'
+  };
+  
+  document.getElementById('tabbarInner').innerHTML = cfg.tabs.map(t => `
+    <button class="tab-item" data-tab="${t.id}" onclick="navigate('${t.id}')">
+      ${tabIcons[t.icon] || tabIcons.home}
+      <span>${t.label}</span>
+    </button>
+  `).join('');
+}
+
+function renderCustomers(filter = 'all') {
+  let list = STATE.customers;
+  if (filter !== 'all') list = list.filter(c => c.status === filter);
+  const el = document.getElementById('customersList');
+  el.innerHTML = list.length 
+    ? list.map(c => customerCardHtml(c, true)).join('')
+    : emptyHtml('No customers found', 'Add new customers to start tracking');
+}
+
+function filterCustomers(filter, btn) {
+  document.querySelectorAll('#customerFilters .filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderCustomers(filter);
+}
+
+function renderJobs(filter = 'today') {
+  let list = STATE.jobs;
+  if (filter !== 'all') list = list.filter(j => j.status === filter);
+  const el = document.getElementById('jobsList');
+  el.innerHTML = list.length 
+    ? list.map(j => jobCardHtml(j, true)).join('')
+    : emptyHtml('No jobs', 'No jobs match this filter');
+}
+
+function filterJobs(filter, btn) {
+  document.querySelectorAll('#view-jobs .filter-chip').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  renderJobs(filter);
+}
+
+function renderRoute() {
+  const el = document.getElementById('routeStops');
+  el.innerHTML = STATE.routeStops.map((s, i) => {
+    const pillClass = s.status === 'done' ? 'pill-done' : s.status === 'progress' ? 'pill-progress' : 'pill-pending';
+    const pillLabel = s.status === 'done' ? 'Done' : s.status === 'progress' ? 'Now' : 'Upcoming';
+    return `
+      <article class="list-card">
+        <div class="lc-row">
+          <div class="lc-icon ${s.status === 'done' ? 'green' : s.status === 'progress' ? 'copper' : ''}">
+            <span style="font-family:var(--font-display); font-size:18px; font-weight:600;">${i + 1}</span>
+          </div>
+          <div class="lc-body">
+            <div class="lc-title-row">
+              <span class="lc-title">${s.name}</span>
+              <span style="font-size:12px; color:var(--stone);">${s.time}</span>
+            </div>
+            <div class="lc-meta">${s.address} · ${s.distance}</div>
+            <span class="pill ${pillClass}">${pillLabel}</span>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function renderCommission() {
+  const role = STATE.role;
+  let title = 'Commission';
+  if (role === 'tech') title = 'Earnings';
+  if (role === 'dealer') title = 'Payouts';
+  document.getElementById('commTitle').textContent = title;
+  document.getElementById('commDash').dataset.role = role;
+  
+  // Generate commission data based on role
+  const data = role === 'sales' ? {
+    thisMonth: 24500,
+    lastMonth: 18200,
+    pending: 8200,
+    paid: 16300,
+    rate: '8%',
+    transactions: STATE.orders.map(o => ({ id: o.id, customer: o.customer, product: o.product, base: o.amount, comm: o.commission, date: o.date, status: 'paid' }))
+  } : role === 'tech' ? {
+    thisMonth: 6800,
+    lastMonth: 5400,
+    pending: 2200,
+    paid: 4600,
+    rate: '15%',
+    transactions: STATE.jobs.filter(j => j.status === 'done').map(j => ({ id: j.id, customer: j.customer, product: j.type, base: j.amount, comm: Math.round(j.amount * 0.15), date: daysAgo(2), status: 'paid' }))
+  } : {
+    thisMonth: 32000,
+    lastMonth: 28500,
+    pending: 32000,
+    paid: 0,
+    rate: '12%',
+    transactions: STATE.orders.map(o => ({ id: o.id, customer: o.customer, product: o.product, base: o.amount, comm: Math.round(o.amount * 0.12), date: o.date, status: 'pending' }))
+  };
+  
+  const html = `
+    <!-- Top stats -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-3); margin-bottom:var(--space-5);">
+      <div class="list-rows" style="padding:var(--space-4); margin:0;">
+        <div style="font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); margin-bottom:6px;">This Month</div>
+        <div style="font-family:var(--font-display); font-size:26px; font-weight:600; color:var(--forest); line-height:1;"><span style="font-size:16px; color:var(--copper);">₹</span>${formatMoney(data.thisMonth)}</div>
+        <div style="font-size:11px; color:var(--success); margin-top:4px;">↑ ${Math.round((data.thisMonth - data.lastMonth) / data.lastMonth * 100)}% vs last month</div>
+      </div>
+      <div class="list-rows" style="padding:var(--space-4); margin:0;">
+        <div style="font-size:10px; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--stone); margin-bottom:6px;">Pending</div>
+        <div style="font-family:var(--font-display); font-size:26px; font-weight:600; color:var(--copper); line-height:1;"><span style="font-size:16px;">₹</span>${formatMoney(data.pending)}</div>
+        <div style="font-size:11px; color:var(--stone); margin-top:4px;">Next payout: 30th</div>
+      </div>
+    </div>
+    
+    <!-- Rate info -->
+    <div class="list-rows" style="padding:var(--space-4); display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <div style="font-size:13px; color:var(--charcoal); margin-bottom:2px;">Commission Rate</div>
+        <div style="font-size:11px; color:var(--stone);">${role === 'tech' ? 'On service jobs' : role === 'dealer' ? 'On dealer sales' : 'On product sales'}</div>
+      </div>
+      <div style="font-family:var(--font-display); font-size:28px; font-weight:600; color:var(--copper);">${data.rate}</div>
+    </div>
+    
+    <!-- Transactions -->
+    <div class="section">
+      <div class="section-head">
+        <span class="section-title">Recent Transactions</span>
+      </div>
+      ${data.transactions.length ? data.transactions.map(t => `
+        <article class="list-card">
+          <div class="lc-row">
+            <div class="lc-icon ${t.status === 'paid' ? 'green' : 'amber'}">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="14" rx="2" stroke-linejoin="round"/><path d="M2 10h20" stroke-linecap="round"/></svg>
+            </div>
+            <div class="lc-body">
+              <div class="lc-title-row">
+                <span class="lc-title">${t.product}</span>
+                <span class="lc-amount" style="color:var(--success);"><span class="currency">+₹</span>${formatMoney(t.comm)}</span>
+              </div>
+              <div class="lc-meta">${t.customer} · ${formatDate(t.date)}</div>
+              <div class="lc-meta-row">
+                <span class="lc-id">${t.id}</span>
+                <span class="pill ${t.status === 'paid' ? 'pill-done' : 'pill-pending'}">${t.status === 'paid' ? 'Paid' : 'Pending'}</span>
+                <span style="font-size:11px; color:var(--stone);">on ₹${formatMoney(t.base)}</span>
+              </div>
+            </div>
+          </div>
+        </article>
+      `).join('') : emptyHtml('No transactions yet', 'Earnings will appear here')}
+    </div>
+  `;
+  
+  document.getElementById('commContent').innerHTML = html;
+}
+
+function renderProfileView() {
+  if (!STATE.user || !STATE.role) return;
+  const u = STATE.user;
+  const cfg = ROLE_CONFIG[STATE.role];
+  document.getElementById('profileDash').dataset.role = STATE.role;
+  document.getElementById('profileAvatar').textContent = u.avatar || (u.name || 'U').charAt(0);
+  document.getElementById('profileName').textContent = u.name;
+  document.getElementById('profilePhone').textContent = u.phone ? '+91 ••••• •' + u.phone.slice(-4) : '+91 ••••• •••••';
+  document.getElementById('profileRoleBadge').textContent = cfg.badge;
+  
+  // Stats per role
+  if (STATE.role === 'sales') {
+    document.getElementById('profStat1').textContent = '24';
+    document.getElementById('profStat2').textContent = '127';
+    document.getElementById('profStat3').textContent = '★ 4.8';
+  } else if (STATE.role === 'tech') {
+    document.getElementById('profStat1').textContent = '47';
+    document.getElementById('profStat2').textContent = '342';
+    document.getElementById('profStat3').textContent = '★ 4.9';
+  } else {
+    document.getElementById('profStat1').innerHTML = '<span style="font-size:14px;">₹</span>4.2L';
+    document.getElementById('profStat2').textContent = '23';
+    document.getElementById('profStat3').textContent = '★ 4.7';
+  }
+}
+
+// ──────────────────────────────────────────────────────────
+// CARD BUILDERS
+// ──────────────────────────────────────────────────────────
+function customerCardHtml(c, expanded = false) {
+  const statusMap = {
+    lead:   { class: 'pill-new',     label: 'Lead' },
+    active: { class: 'pill-active',  label: 'Active' },
+    repeat: { class: 'pill-done',    label: 'Repeat' }
+  };
+  const s = statusMap[c.status] || statusMap.active;
+  return `
+    <article class="list-card">
+      <div class="lc-row">
+        <div class="lc-icon" style="background:linear-gradient(135deg, var(--copper-soft), var(--copper-mist)); color:var(--copper-deep); font-family:var(--font-display); font-size:18px; font-weight:700;">
+          ${c.avatar}
+        </div>
+        <div class="lc-body">
+          <div class="lc-title-row">
+            <span class="lc-title">${c.name}</span>
+            <span class="pill ${s.class}">${s.label}</span>
+          </div>
+          <div class="lc-meta">${c.area}, ${c.city}${c.orders ? ' · ' + c.orders + ' order' + (c.orders > 1 ? 's' : '') : ''}</div>
+          ${expanded ? `
+            <div class="lc-meta" style="margin-top:6px; font-style:italic;">${c.notes || ''}</div>
+            <div class="lc-foot">
+              <span style="font-size:11px; color:var(--stone);">Last contact: ${formatDate(c.lastContact)}</span>
+              <div class="lc-quick">
+                <a href="${fullPhoneTel(c.phone)}" class="lc-quick-btn green" onclick="event.stopPropagation();">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href="${fullPhoneWa(c.phone)}" target="_blank" class="lc-quick-btn green" onclick="event.stopPropagation();">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2.1-1.4-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.1.1-.3 0-.4 0-.1-.6-1.3-.8-1.8-.1-.4-.4-.6-.7-.6h-.5c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.1.5 2.2 1.2 3.2 1.3 1.9 3 3.4 5 4.4.6.3 1.1.5 1.7.7.6.2 1.2.2 1.9.1.7-.1 1.4-.6 1.8-1.2.2-.4.2-.8.1-1.2 0-.1-.2-.2-.4-.3"/></svg>
+                </a>
+                <button class="lc-quick-btn copper" onclick="event.stopPropagation(); openCustomerDetail('${c.id}')">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1" fill="currentColor"/><circle cx="19" cy="12" r="1" fill="currentColor"/><circle cx="5" cy="12" r="1" fill="currentColor"/></svg>
+                </button>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function jobCardHtml(j, expanded = false) {
+  const statusMap = {
+    today:    { class: 'pill-active',   label: 'Today' },
+    pending:  { class: 'pill-pending',  label: 'Pending' },
+    progress: { class: 'pill-progress', label: 'In Progress' },
+    done:     { class: 'pill-done',     label: 'Completed' }
+  };
+  const s = statusMap[j.status] || statusMap.pending;
+  
+  return `
+    <article class="list-card">
+      <div class="lc-row">
+        <div class="lc-icon copper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.7 3.7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="lc-body">
+          <div class="lc-title-row">
+            <span class="lc-title">${j.type}</span>
+            <span class="lc-amount"><span class="currency">₹</span>${formatMoney(j.amount)}</span>
+          </div>
+          <div class="lc-meta">${j.customer} · ${j.scheduled}</div>
+          <div class="lc-meta-row">
+            <span class="lc-id">${j.id}</span>
+            <span class="pill ${s.class}">${s.label}</span>
+            <span style="font-size:11px; color:var(--stone);">${j.estimate} min</span>
+          </div>
+          ${expanded ? `
+            <div class="lc-secure-block" style="margin-top:8px; padding:10px; background:rgba(208, 141, 94, 0.08); border:1px solid rgba(208, 141, 94, 0.2); border-radius:8px;">
+              <div style="display:flex; align-items:center; gap:6px; font-size:10px; color:var(--copper); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:6px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Confidential · For Service Only</span>
+              </div>
+              <div class="lc-meta" style="font-size:13px;">📍 ${j.address}</div>
+              ${j.notes ? `<div class="lc-meta" style="margin-top:4px; font-style:italic; font-size:12px;">"${j.notes}"</div>` : ''}
+            </div>
+            <div class="lc-foot">
+              <span style="font-size:11px; color:var(--stone);">ETA: ${j.eta}</span>
+              <div class="lc-quick">
+                <a href="${fullPhoneTel(j.phone)}" class="lc-quick-btn green" onclick="event.stopPropagation();" title="${formatPhone(j.phone)}">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                ${j.status !== 'done' ? `
+                  <button class="lc-quick-btn copper" onclick="event.stopPropagation(); openJobAction('${j.id}')">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </button>
+                ` : `
+                  <span style="font-size:11px; color:var(--success); font-weight:600;">✓ Done</span>
+                `}
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function orderCardHtml(o) {
+  return `
+    <article class="list-card">
+      <div class="lc-row">
+        <div class="lc-icon green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 9h18l-2 9a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L3 9zM8 9V5a4 4 0 0 1 8 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="lc-body">
+          <div class="lc-title-row">
+            <span class="lc-title">${o.product}</span>
+            <span class="lc-amount"><span class="currency">₹</span>${formatMoney(o.amount)}</span>
+          </div>
+          <div class="lc-meta">${o.customer} · ${formatDate(o.date)}</div>
+          <div class="lc-meta-row">
+            <span class="lc-id">${o.id}</span>
+            <span class="pill pill-${o.status === 'delivered' ? 'done' : o.status === 'shipped' ? 'progress' : 'pending'}">${o.status}</span>
+            <span style="font-size:11px; color:var(--success); font-weight:600;">+₹${formatMoney(o.commission)} comm</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  `;
+}
+
+function emptyHtml(title, desc) {
+  return `
+    <div class="empty">
+      <div class="empty-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      </div>
+      <div class="empty-title">${title}</div>
+      <div class="empty-desc">${desc}</div>
+    </div>
+  `;
+}
+
+// ──────────────────────────────────────────────────────────
+// FORMATTERS & HELPERS
+// ──────────────────────────────────────────────────────────
+function formatMoney(n, compact = false) {
+  if (compact && n >= 100000) return (n / 100000).toFixed(1).replace(/\.0$/, '') + 'L';
+  if (compact && n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'K';
+  return n.toLocaleString('en-IN');
+}
+
+function formatDate(iso) {
+  const d = new Date(iso);
+  const now = new Date();
+  const diff = Math.floor((now - d) / 86400000);
+  if (diff === 0) return 'Today';
+  if (diff === 1) return 'Yesterday';
+  if (diff > 0 && diff < 7) return diff + ' days ago';
+  if (diff < 0 && diff > -7) return 'In ' + Math.abs(diff) + ' days';
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short' });
+}
+
+function greetingText() {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 17) return 'Good afternoon';
+  return 'Good evening';
+}
+
+// ──────────────────────────────────────────────────────────
+// ACTIONS
+// ──────────────────────────────────────────────────────────
+function showToast(msg, type) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastText').textContent = msg;
+  t.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(showToast._t);
+  showToast._t = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+function openModal(title, sub, body) {
+  document.getElementById('modalTitle').textContent = title;
+  document.getElementById('modalSub').textContent = sub;
+  document.getElementById('modalBody').innerHTML = body;
+  document.getElementById('modal').classList.add('show');
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+}
+
+function openAddCustomer() {
+  openModal(
+    'Add New Customer',
+    'Quick capture customer info from the field.',
+    `
+      <div class="form-group">
+        <label class="form-label">Customer Name <span style="color:var(--copper);">*</span></label>
+        <input id="newCustName" type="text" class="form-input" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone <span style="color:var(--copper);">*</span></label>
+        <input id="newCustPhone" type="tel" class="form-input" placeholder="10-digit number" maxlength="10" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Area / City</label>
+        <input id="newCustCity" type="text" class="form-input" placeholder="Satellite, Ahmedabad">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Lead Status</label>
+        <select id="newCustStatus" class="form-select">
+          <option value="lead">Lead (interested)</option>
+          <option value="active">Active</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Notes</label>
+        <textarea id="newCustNotes" class="form-textarea" placeholder="Any specific interests or notes..."></textarea>
+      </div>
+      <button class="btn-primary" onclick="saveCustomer()">
+        <span class="btn-text">Save Customer</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    `
+  );
+}
+
+function saveCustomer() {
+  const name = document.getElementById('newCustName').value.trim();
+  const phone = document.getElementById('newCustPhone').value.replace(/\D/g, '');
+  if (!name || phone.length !== 10) {
+    showToast('Name & valid phone required', 'error');
+    return;
+  }
+  const id = 'C' + String(STATE.customers.length + 1).padStart(3, '0');
+  STATE.customers.unshift({
+    id, name, phone,
+    city: document.getElementById('newCustCity').value || 'Unknown',
+    area: '',
+    status: document.getElementById('newCustStatus').value,
+    orders: 0,
+    lastContact: new Date().toISOString(),
+    avatar: name.charAt(0).toUpperCase(),
+    notes: document.getElementById('newCustNotes').value
+  });
+  closeModal();
+  showToast('Customer added ✓', 'success');
+  if (STATE.view === 'customers') renderCustomers();
+  if (STATE.view === 'home') renderHome();
+}
+
+function openCustomerDetail(id) {
+  const c = STATE.customers.find(x => x.id === id);
+  if (!c) return;
+  openModal(c.name, `Customer · ${c.id}`, `
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:16px;">
+      <div style="background:var(--cream-soft); padding:12px; border-radius:var(--r-md);">
+        <div style="font-size:11px; color:var(--stone); letter-spacing:0.1em; text-transform:uppercase;">Status</div>
+        <div style="margin-top:6px;"><span class="pill pill-${c.status === 'lead' ? 'new' : c.status === 'repeat' ? 'done' : 'active'}">${c.status}</span></div>
+      </div>
+      <div style="background:var(--cream-soft); padding:12px; border-radius:var(--r-md);">
+        <div style="font-size:11px; color:var(--stone); letter-spacing:0.1em; text-transform:uppercase;">Orders</div>
+        <div style="font-family:var(--font-display); font-size:22px; font-weight:600; color:var(--forest); margin-top:4px;">${c.orders}</div>
+      </div>
+    </div>
+    <div style="background:var(--cream-soft); padding:14px; border-radius:var(--r-md); margin-bottom:12px;">
+      <div style="font-size:11px; color:var(--stone); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Location</div>
+      <div style="font-size:13.5px;">${c.area}, ${c.city}</div>
+    </div>
+    <div style="background:var(--cream-soft); padding:14px; border-radius:var(--r-md); margin-bottom:12px;">
+      <div style="font-size:11px; color:var(--stone); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Contact</div>
+      <div style="font-size:13.5px; font-family:var(--font-mono, monospace);">${formatPhone(c.phone)}</div>
+      <div style="font-size:10px; color:var(--copper); margin-top:4px; display:flex; align-items:center; gap:4px;">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Privacy: only last 4 digits shown
+      </div>
+    </div>
+    ${c.notes ? `
+    <div style="background:var(--cream-soft); padding:14px; border-radius:var(--r-md); margin-bottom:12px;">
+      <div style="font-size:11px; color:var(--stone); letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Notes</div>
+      <div style="font-size:13.5px; font-style:italic;">"${c.notes}"</div>
+    </div>` : ''}
+    <div style="display:flex; gap:8px;">
+      <a href="${fullPhoneTel(c.phone)}" class="btn-primary" style="height:48px; flex:1; text-decoration:none; background:var(--success);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Call
+      </a>
+      <a href="${fullPhoneWa(c.phone)}" target="_blank" class="btn-primary" style="height:48px; flex:1; text-decoration:none;">
+        WhatsApp
+      </a>
+    </div>
+  `);
+}
+
+function openJobAction(id) {
+  const j = STATE.jobs.find(x => x.id === id);
+  if (!j) return;
+  openModal(j.type, `Job ${j.id}`, `
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      ${j.status !== 'progress' && j.status !== 'done' ? `
+        <button class="btn-primary" onclick="updateJobStatus('${id}', 'progress')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          Start Job
+        </button>
+      ` : ''}
+      ${j.status === 'progress' ? `
+        <button class="btn-primary" style="background:var(--success);" onclick="updateJobStatus('${id}', 'done')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Mark Complete
+        </button>
+      ` : ''}
+      <button class="btn-primary" style="background:transparent; color:var(--forest); border:1.5px solid rgba(20,40,32,0.15); box-shadow:none;" onclick="closeModal(); navigate('billing');">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h6M9 11h6M9 15h4" stroke-linecap="round"/></svg>
+        Generate Bill
+      </button>
+    </div>
+  `);
+}
+
+function updateJobStatus(id, status) {
+  const j = STATE.jobs.find(x => x.id === id);
+  if (!j) return;
+  
+  j.status = status;
+  closeModal();
+  
+  if (status === 'done') {
+    // Job complete — show photo upload as OPTIONAL
+    showToast('Job completed ✓', 'success');
+    setTimeout(() => openServicePhotoModal(id), 600);
+  } else {
+    showToast(status === 'progress' ? 'Job started' : 'Status updated', 'success');
+  }
+  
+  if (STATE.view === 'jobs') {
+    const activeFilter = document.querySelector('#view-jobs .filter-chip.active');
+    renderJobs(activeFilter && activeFilter.textContent.toLowerCase().includes('all') ? 'all' : 'today');
+  }
+}
+
+// ──────────────────────────────────────────────────────────
+// SERVICE PHOTO UPLOAD (Technician — OPTIONAL after job done)
+// ──────────────────────────────────────────────────────────
+function openServicePhotoModal(jobId) {
+  const j = STATE.jobs.find(x => x.id === jobId);
+  if (!j) return;
+  
+  if (!j.photos) j.photos = [];
+  
+  openModal('Service Photos', `Add photos for ${j.id} (Optional)`, `
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      
+      <div style="background:rgba(208, 141, 94, 0.08); border:1px solid rgba(208, 141, 94, 0.2); border-radius:10px; padding:12px; display:flex; gap:10px; align-items:flex-start;">
+        <div style="flex-shrink:0; width:32px; height:32px; border-radius:8px; background:var(--copper); color:var(--cream); display:grid; place-items:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-weight:600; font-size:13px; color:var(--forest);">Optional — Skip if not needed</div>
+          <div style="font-size:12px; color:var(--charcoal); margin-top:2px; line-height:1.45;">Add photos as proof of service. Helps build customer trust.</div>
+        </div>
+      </div>
+      
+      <input type="file" id="servicePhotoInput" accept="image/*" multiple capture="environment" style="display:none;" onchange="handleServicePhotoSelect('${jobId}')">
+      
+      <div id="photoPreviewGrid" style="display:grid; grid-template-columns:repeat(3, 1fr); gap:8px; min-height:80px;">
+        ${j.photos.length === 0 ? `
+          <div style="grid-column:1/-1; text-align:center; padding:20px; color:var(--stone); font-size:12px;">
+            No photos yet. Tap "Add Photos" below.
+          </div>
+        ` : j.photos.map((p, i) => `
+          <div style="position:relative; aspect-ratio:1; border-radius:8px; overflow:hidden; border:1px solid rgba(20,40,32,0.1);">
+            <img src="${p}" style="width:100%; height:100%; object-fit:cover;">
+            <button onclick="removeServicePhoto('${jobId}', ${i})" style="position:absolute; top:4px; right:4px; width:22px; height:22px; border-radius:50%; background:rgba(0,0,0,0.6); color:white; border:none; cursor:pointer; display:grid; place-items:center; padding:0;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        `).join('')}
+      </div>
+      
+      <button class="btn-primary" onclick="document.getElementById('servicePhotoInput').click()" style="background:var(--copper);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="13" r="4"/></svg>
+        Add Photos
+      </button>
+      
+      <div style="display:flex; gap:8px;">
+        <button class="btn-primary" onclick="skipServicePhotos('${jobId}')" style="background:transparent; color:var(--charcoal); border:1.5px solid rgba(20,40,32,0.15); box-shadow:none; flex:1;">
+          Skip
+        </button>
+        <button class="btn-primary" onclick="saveServicePhotos('${jobId}')" style="flex:2;">
+          Done${j.photos.length > 0 ? ` · ${j.photos.length} photo${j.photos.length > 1 ? 's' : ''}` : ''}
+        </button>
+      </div>
+    </div>
+  `);
+}
+
+function handleServicePhotoSelect(jobId) {
+  const input = document.getElementById('servicePhotoInput');
+  const j = STATE.jobs.find(x => x.id === jobId);
+  if (!j || !input.files || input.files.length === 0) return;
+  
+  if (!j.photos) j.photos = [];
+  const filesArr = Array.from(input.files);
+  let processed = 0;
+  
+  filesArr.forEach(file => {
+    const reader = new FileReader();
+    reader.onload = e => {
+      // Compress: draw to canvas at max 800px width
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        const maxW = 800;
+        const scale = Math.min(1, maxW / img.width);
+        canvas.width = img.width * scale;
+        canvas.height = img.height * scale;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        j.photos.push(canvas.toDataURL('image/jpeg', 0.7));
+        processed++;
+        if (processed === filesArr.length) {
+          openServicePhotoModal(jobId); // refresh modal
+        }
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function removeServicePhoto(jobId, idx) {
+  const j = STATE.jobs.find(x => x.id === jobId);
+  if (j && j.photos) {
+    j.photos.splice(idx, 1);
+    openServicePhotoModal(jobId);
+  }
+}
+
+function skipServicePhotos(jobId) {
+  closeModal();
+  showToast('Job marked complete (no photos)', 'info');
+}
+
+function saveServicePhotos(jobId) {
+  const j = STATE.jobs.find(x => x.id === jobId);
+  closeModal();
+  if (j && j.photos && j.photos.length > 0) {
+    showToast(`✓ ${j.photos.length} photo${j.photos.length > 1 ? 's' : ''} saved with job`, 'success');
+  } else {
+    showToast('Job marked complete', 'success');
+  }
+}
+
+function createBill() {
+  const cust = document.getElementById('billCustName').value.trim();
+  const phone = document.getElementById('billCustPhone').value.replace(/\D/g, '');
+  const product = document.getElementById('billProduct').value;
+  if (!cust || phone.length !== 10 || !product) {
+    showToast('All required fields needed', 'error');
+    return;
+  }
+  const [code, name, price] = product.split('|');
+  const orderId = 'ORD-' + Math.random().toString(36).substring(2, 6).toUpperCase();
+  
+  showToast(`Bill ${orderId} generated · ₹${formatMoney(parseInt(price))}`, 'success');
+  
+  // Reset
+  document.getElementById('billCustName').value = '';
+  document.getElementById('billCustPhone').value = '';
+  document.getElementById('billProduct').value = '';
+  document.getElementById('billAddress').value = '';
+  
+  setTimeout(() => navigate('home'), 1200);
+}
+
+function openNotifications() {
+  openModal('Notifications', '3 new updates', `
+    <div class="list-rows" style="margin:0;">
+      <div class="list-row">
+        <div class="lr-icon copper"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9l-3.7 3.7z"/></svg></div>
+        <div class="lr-text"><div class="lr-title">New job assigned</div><div class="lr-sub">Filter Replacement · Rajesh K · Today 11:30 AM</div></div>
+      </div>
+      <div class="list-row">
+        <div class="lr-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg></div>
+        <div class="lr-text"><div class="lr-title">Commission credited</div><div class="lr-sub">₹880 for ORD-K12X · 1 hr ago</div></div>
+      </div>
+      <div class="list-row">
+        <div class="lr-icon info"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <div class="lr-text"><div class="lr-title">Reminder</div><div class="lr-sub">Sunita Shah follow-up · Tomorrow</div></div>
+      </div>
+    </div>
+  `);
+}
+
+function toggleGPS(el) {
+  el.classList.toggle('on');
+  const isOn = el.classList.contains('on');
+  showToast(isOn ? 'GPS tracking ON' : 'GPS tracking OFF', isOn ? 'success' : 'error');
+  document.getElementById('gpsPill').classList.toggle('off', !isOn);
+  document.getElementById('gpsPill').textContent = isOn ? 'GPS Live' : 'GPS Off';
+}
+
+function contactSupport() {
+  openModal('Need help?', 'Contact your manager or our team.', `
+    <div class="list-rows" style="margin:0;">
+      <a href="tel:+919428211200" class="list-row" style="text-decoration:none;">
+        <div class="lr-icon green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c1 .3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div class="lr-text"><div class="lr-title">Call Support</div><div class="lr-sub">+91 ••••• •1200</div></div>
+      </a>
+      <a href="https://wa.me/919428211200" target="_blank" class="list-row" style="text-decoration:none;">
+        <div class="lr-icon green"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2.1-1.4-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5.1-.1.2-.3.4-.4.1-.1.2-.3.2-.4.1-.1.1-.3 0-.4 0-.1-.6-1.3-.8-1.8-.1-.4-.4-.6-.7-.6h-.5c-.2 0-.5.1-.7.3-.7.7-1 1.6-1 2.6.1 1.1.5 2.2 1.2 3.2 1.3 1.9 3 3.4 5 4.4.6.3 1.1.5 1.7.7.6.2 1.2.2 1.9.1.7-.1 1.4-.6 1.8-1.2.2-.4.2-.8.1-1.2 0-.1-.2-.2-.4-.3"/></svg></div>
+        <div class="lr-text"><div class="lr-title">WhatsApp Manager</div><div class="lr-sub">Quick chat with team lead</div></div>
+      </a>
+    </div>
+  `);
+}
+
+// ──────────────────────────────────────────────────────────
+// INIT
+// ──────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Apply logo to all auth screens
+  ['logoRole', 'logoPhone', 'logoOtp', 'logoBio'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.src = 'data:image/png;base64,' + LOGO_B64;
+  });
+  
+  // Restore session if exists
+  try {
+    const saved = localStorage.getItem('gf_field_user');
+    if (saved) {
+      const data = JSON.parse(saved);
+      if (data.user && data.role) {
+        STATE.user = data.user;
+        STATE.role = data.role;
+        navigate('home');
+        return;
+      }
+    }
+  } catch(e) {}
+  
+  // OTP input behavior
+  document.querySelectorAll('.otp-input').forEach((input, idx, all) => {
+    input.addEventListener('input', (e) => {
+      const val = e.target.value.replace(/\D/g, '');
+      e.target.value = val;
+      if (val) {
+        e.target.classList.add('filled');
+        if (idx < all.length - 1) all[idx + 1].focus();
+      } else {
+        e.target.classList.remove('filled');
+      }
+      const allFilled = Array.from(all).every(i => i.value.length === 1);
+      if (allFilled) setTimeout(verifyOtp, 100);
+    });
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Backspace' && !e.target.value && idx > 0) {
+        all[idx - 1].focus();
+        all[idx - 1].value = '';
+        all[idx - 1].classList.remove('filled');
+      }
+    });
+    input.addEventListener('paste', (e) => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '');
+      if (text.length >= 6) {
+        all.forEach((inp, i) => {
+          inp.value = text[i] || '';
+          inp.classList.toggle('filled', !!inp.value);
+        });
+        setTimeout(verifyOtp, 100);
+      }
+    });
+  });
+  
+  // Phone input - digits only
+  ['loginPhone', 'newCustPhone', 'billCustPhone'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/\D/g, '').slice(0, 10);
+      });
+    }
+  });
+});
+
+</script>
+</body>
+</html>
